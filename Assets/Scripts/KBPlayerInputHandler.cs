@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
+[RequireComponent(typeof(Player))]
 public class KBPlayerInputHandler : MonoBehaviour
 {
     #region ABOUT
@@ -14,30 +16,40 @@ public class KBPlayerInputHandler : MonoBehaviour
 
     #region VARIABLES
     [Tooltip("Main Non-VR Game Camera")]
-    public Camera camera;
+    public Camera cam;
+
+    public Player player;
+
+    [SerializeField] private MouseLook mouseLook;
     #endregion
+
+    private void Awake()
+    {
+        cam = GetComponentInChildren<Camera>();
+        player = GetComponent<Player>();
+    }
+
+    private void Start()
+    {
+        mouseLook.Init(transform, cam.transform);
+    }
+
+    private void FixedUpdate()
+    {
+        mouseLook.UpdateCursorLock();
+    }
 
     /// <summary>
     /// Listens for a mouse click and moves the Main Camera and [Camera Rig] to a raycast hit at a position to the click.
     /// </summary>
     void Update()
     {
+        mouseLook.LookRotation(transform, cam.transform);
+        
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                Transform objectHit = hit.transform;
-
-                // We give an offset of 2.0f for Y, and keep it throughout.
-                Vector3 newPos = new Vector3(objectHit.position.x, 2.0f, objectHit.position.z);
-
-                // Set the main camera and VR camera (this)'s positions.
-                camera.transform.position = newPos;
-                this.transform.position = newPos;
-            }
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            player.TeleportTo(ray);
         }
     }
 }
