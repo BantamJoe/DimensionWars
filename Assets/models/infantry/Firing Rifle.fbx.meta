@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 3df7c418d37a8b746954058df28f7469
-timeCreated: 1521324240
+guid: 1343fae286ef2ef499f0fda1c7b72869
+timeCreated: 1521655643
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Geo
-    100002: //RootNode
+    100000: //RootNode
+    100002: Geo
     100004: Soldier_body
     100006: Soldier_head
     100008: swat:Head
@@ -78,8 +78,8 @@ ModelImporter:
     100140: swat:Spine
     100142: swat:Spine1
     100144: swat:Spine2
-    400000: Geo
-    400002: //RootNode
+    400000: //RootNode
+    400002: Geo
     400004: Soldier_body
     400006: Soldier_head
     400008: swat:Head
@@ -184,7 +184,7 @@ ModelImporter:
       name: mixamo.com
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 21
+      lastFrame: 8
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
