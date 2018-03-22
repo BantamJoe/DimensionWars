@@ -39,6 +39,7 @@ public class Unit : MonoBehaviour
             waypointList.RemoveAt(0);
             if(waypointList.Count != 0)
                 mover.setTarget(waypointList[0]);
+            
         }
 
 
