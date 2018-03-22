@@ -287,7 +287,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4107063462439646, guid: 49dc58caaff209d479811b7326a60193, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4107063462439646, guid: 49dc58caaff209d479811b7326a60193, type: 2}
       propertyPath: m_LocalRotation.z
@@ -295,11 +295,35 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4107063462439646, guid: 49dc58caaff209d479811b7326a60193, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.000000749014
       objectReference: {fileID: 0}
     - target: {fileID: 4107063462439646, guid: 49dc58caaff209d479811b7326a60193, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532358098357090, guid: 49dc58caaff209d479811b7326a60193, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.37269193
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532358098357090, guid: 49dc58caaff209d479811b7326a60193, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.5431993
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532358098357090, guid: 49dc58caaff209d479811b7326a60193, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.52489805
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532358098357090, guid: 49dc58caaff209d479811b7326a60193, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.53899664
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532358098357090, guid: 49dc58caaff209d479811b7326a60193, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 189.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532358098357090, guid: 49dc58caaff209d479811b7326a60193, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 97.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 49dc58caaff209d479811b7326a60193, type: 2}
