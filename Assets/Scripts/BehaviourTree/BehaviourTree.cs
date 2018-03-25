@@ -6,6 +6,8 @@ public class BehaviourTree : MonoBehaviour
 {
     public BehaviourNode root;
 
+    public BehaviourNode.Context context;
+
     void Start()
     {
         StartCoroutine(Execute());
@@ -25,5 +27,12 @@ public class BehaviourTree : MonoBehaviour
         {
             yield return new WaitForFixedUpdate();
         }
+    }
+
+    public T CreateNode<T>() where T : BehaviourNode
+    {
+        var instance = ScriptableObject.CreateInstance<T>();
+        instance.context = context;
+        return instance;
     }
 }

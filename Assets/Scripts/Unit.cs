@@ -9,16 +9,21 @@ public class Unit : MonoBehaviour
     public UnitMover mover;
     public Unit target;
     public float waypointTargetDistance;
+    public float gunCooldown;
+    public Squad squad;
 
     List<Vector3> waypointList = new List<Vector3>();
 
-    void Start()
+    void Awake()
     {
         mover = GetComponent<UnitMover>();
+        squad = transform.parent.GetComponent<Squad>();
     }
 
     void Update()
     {
+        gunCooldown -= Time.deltaTime;
+
         if (waypointList.Count != 0)
         {
             var pos = waypointList[0];

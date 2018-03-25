@@ -8,18 +8,23 @@ public class UnitMover : MonoBehaviour
 {
     private NavMeshAgent agent;
 
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
     }
-
-    void Update()
-    {
-
-    }
-
+    
     public void SetTarget(Vector3 pos)
     {
         agent.SetDestination(pos);
+    }
+
+    public void StopMovement()
+    {
+        agent.isStopped = true;
+    }
+
+    public void ResumeMovement()
+    {
+        agent.isStopped = false;
     }
 }

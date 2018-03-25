@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Squad : MonoBehaviour
 {
-    bool isSelected;
+    public bool isSelected;
+    public int team;
 
     public void SetSelected(GameObject selection)
     {

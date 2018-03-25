@@ -5,18 +5,23 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float height;
-    
+    public int team;
+
     public void SetSquadTarget(Ray ray)
     {
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            var squads = FindObjectsOfType<Squad>();
+            foreach (var squad in squads)
             {
-                var squads = FindObjectsOfType<Squad>();
-                foreach (var squad in squads)
+                if (squad.team != team)
                 {
-                    squad.AddWaypoint(hit.point);
+                    continue;
                 }
+                squad.AddWaypoint(hit.point);
             }
+        }
     }
 
     public void TeleportTo(Ray ray)
