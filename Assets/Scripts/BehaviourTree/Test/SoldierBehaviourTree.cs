@@ -16,8 +16,6 @@ public class SoldierBehaviourTree : MonoBehaviour {
         b.message = "Node B";
         root.children = new List<BehaviourNode>
         {
-            a,
-            b
         };
         bt.root = root;
     }

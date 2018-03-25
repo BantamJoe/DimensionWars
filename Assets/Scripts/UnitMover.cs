@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class UnitMover : MonoBehaviour
 {
-    
     private NavMeshAgent agent;
 
     void Start()
@@ -15,10 +15,10 @@ public class UnitMover : MonoBehaviour
 
     void Update()
     {
-        
+
     }
 
-    public void setTarget(Vector3 pos)
+    public void SetTarget(Vector3 pos)
     {
         agent.SetDestination(pos);
     }
