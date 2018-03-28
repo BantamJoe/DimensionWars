@@ -17,7 +17,10 @@ public class UnitHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        health = PlayerPrefs.GetInt("Health");
+        if (health <= 0)
+            Destroy(gameObject);
+
+        //health = PlayerPrefs.GetInt("Health");
 
         if (isDamaged)
         {
@@ -38,7 +41,7 @@ public class UnitHealth : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag ==  "Bullet")
         {
