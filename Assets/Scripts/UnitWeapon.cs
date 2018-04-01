@@ -10,8 +10,6 @@ public class UnitWeapon : MonoBehaviour
     public float speed;
     bool targetInSight;
 
-    List<Unit> squadUnits = new List<Unit>();
-
     // Use this for initialization
     void Start()
     {
@@ -25,12 +23,12 @@ public class UnitWeapon : MonoBehaviour
             Shoot();
 
         if (Input.GetKeyDown(KeyCode.E))
-            fireAt(target);
+            FireAt(target);
     }
 
-    void fireAt(Unit targetAt)
+    void FireAt(Unit targetAt)
     {
-        target.setTarget(targetAt);
+        target.SetTarget(targetAt);
         targetInSight = true;
     }
 
