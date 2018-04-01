@@ -5,40 +5,28 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float height;
- List<Squad> squads = new List<Squad>();
- 
-   // Use this for initialization
-    void Start()
-    {
-      var squads = GameObject.FindObjectsOfType<Squad>();
-        foreach(var squad in squads)
-        {
-            this.squads.Add(squad);
-        }
-    }
+    public int team;
 
-    // Update is called once per frame
-    void Update()
+    public void SetSquadTarget(Ray ray)
     {
-        if (Input.GetMouseButtonDown(1))
-        {   
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                Physics.Raycast(ray, out hit);
-                if (hit.transform)
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            var squads = FindObjectsOfType<Squad>();
+            foreach (var squad in squads)
+            {
+                if (squad.team != team)
                 {
-                    foreach (var squad in squads)
-                    {
-                        squad.addWaypoint(hit.point);
-                    }
-                } 
+                    continue;
+                }
+                squad.AddWaypoint(hit.point);
+            }
         }
     }
 
     public void TeleportTo(Ray ray)
     {
         RaycastHit hit;
-
         if (Physics.Raycast(ray, out hit))
         {
             Vector3 point = hit.point;

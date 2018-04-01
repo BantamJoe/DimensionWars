@@ -6,137 +6,61 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     public bool isSelected;
-    public bool isTarget;
-    public GameObject selectedUnit;
-    UnitMover mover;
-    GameObject waypoint;
-    Unit unit;
-    
+    public UnitMover mover;
+    public Unit target;
+    public float waypointTargetDistance;
+    public float gunCooldown;
+    public Squad squad;
+
     List<Vector3> waypointList = new List<Vector3>();
 
-    void Start()
+    void Awake()
     {
-        //squadUnit = GameObject.FindObjectOfType<Squad>();
-        waypoint = GameObject.FindObjectOfType<GameObject>();
-        isSelected = false;
-        isTarget = false;
         mover = GetComponent<UnitMover>();
-        //mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.z, 0.0f);
+        squad = transform.parent.GetComponent<Squad>();
     }
 
     void Update()
     {
-        if(waypointList.Count == 0)
+        gunCooldown -= Time.deltaTime;
+
+        if (waypointList.Count != 0)
         {
-            return;
+            var pos = waypointList[0];
+            var distance = Vector3.Distance(transform.position, pos);
+            if (distance < waypointTargetDistance)
+            {
+                waypointList.RemoveAt(0);
+                if (waypointList.Count != 0)
+                {
+                    mover.SetTarget(waypointList[0]);
+                }
+            }
         }
-
-        var pos = waypointList[0];
-        var d = Vector3.Distance(transform.position, pos);
-
-        if(d < 5)
-        {
-            waypointList.RemoveAt(0);
-            if(waypointList.Count != 0)
-                mover.setTarget(waypointList[0]);
-            
-        }
-
-
-        //if(squadUnit.selectedUnit != null)
-        //{
-        //    this.transform.position = squadUnit.selectedUnit.transform.position;
-        //}
-        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //RaycastHit hit;
-
-        //if(Physics.Raycast(ray, out hit ))
-        //{
-        //    GameObject hitObject = hit.transform.parent.gameObject;
-
-        //    squadUnit.setSelected(hitObject);
-        //}
-
-        //else
-        //    squadUnit.setUnselected();
-        //    if (Input.GetMouseButtonDown(2))
-        //        waypoint.addWaypoint(Input.mousePosition);
-        //}
-        //void FixedUpdate()
-        //{
-        //    if (Input.GetMouseButtonDown(0))
-        //    {
-        //        bool hit = false;
-        //        RaycastHit ray = new RaycastHit();
-        //        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out ray))
-        //        {
-        //            if (ray.collider.tag == "Unit")
-        //                hit = true;
-        //        }
-
-        //        unSelected();
-        //        if (hit)
-        //            setSelected();
-        //    }
     }
 
-    public void setSelected(GameObject selection)
+    public void SetSelected()
     {
-        if (selectedUnit != null)
-        {
-            if (selection == selectedUnit)
-
-                return;
-
-            setUnselected();
-        }
-
-        selectedUnit = selection;
-        //if (selectedUnit != null)
-        //{
-        //    if (selection == selectedUnit)
-
-        //        return;
-
-        //       setUnselected();
-        //}
         isSelected = true;
-        selectedUnit = selection;
-        //squadUnit.setSelected(selectedUnit);
-        //isSelected = true;
-        //gameObject.tag = "Selected";
-        Debug.Log("Selected");
     }
 
-    public void setUnselected()
+    public void SetUnselected()
     {
-        //squadUnit.setUnselected();
         isSelected = false;
-        //gameObject.tag = "Unit";
-        Debug.Log("Unselcted");
-
     }
 
-    public void setTarget(Unit target)
+    public void SetTarget(Unit target)
     {
-        unit = target;
-        //squadUnit.setTarget(unit);
-        isTarget = true;
-        Debug.Log("Target");
-        //if (Input.GetMouseButtonDown(1) && gameObject.tag == "Enemy")
-        //{
-        //    target = unit;
-        //    isTarget = true;
-        //    target.gameObject.tag = "Target";
-        //}
+        this.target = target;
     }
 
-    public void addWaypoint(Vector3 pos)
+    public void AddWaypoint(Vector3 pos)
     {
         var isEmpty = waypointList.Count == 0;
-        
         waypointList.Add(pos);
         if (isEmpty)
-            mover.setTarget(waypointList[0]);
+        {
+            mover.SetTarget(waypointList[0]);
+        }
     }
 }

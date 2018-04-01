@@ -4,70 +4,47 @@ using UnityEngine;
 
 public class Squad : MonoBehaviour
 {
-    GameObject selectedUnit;
-    bool isSelected;
-    bool isTarget;
-    Vector3 mousePos = new Vector3();
-    Unit waypoint;
-    List<Unit> squadUnits = new List<Unit>();
-    Unit unit;
-    
+    public bool isSelected;
+    public int team;
 
-    void Start()
+    public void SetSelected(GameObject selection)
     {
         var squadUnits = transform.GetComponentsInChildren<Unit>();
-        foreach(var squadUnit in squadUnits)
-        {
-            this.squadUnits.Add(squadUnit);
-        }
-        //waypoint = GameObject.FindObjectOfType<Unit>();
-        isSelected = false;
-        isTarget = false;
-
-        mousePos = new Vector3(Input.mousePosition.x, 0.0f, Input.mousePosition.z);
-
-    }
-
-    void Update()
-    {
-  
-
-    }
-
-    public void setSelected(GameObject selection)
-    {
-        
         foreach (var squadUnit in squadUnits)
         {
-            squadUnit.setSelected(selectedUnit); ;
+            squadUnit.SetSelected();
         }
-      
+
     }
 
-    public void setUnselected()
+    public void SetUnselected()
     {
+        var squadUnits = transform.GetComponentsInChildren<Unit>();
         foreach (var squadUnit in squadUnits)
         {
-            squadUnit.setUnselected(); 
+            squadUnit.SetUnselected();
         }
-       
+
     }
 
-    public void setTarget(Unit target)
+    public void SetTarget(Unit target)
     {
-       
+        var squadUnits = transform.GetComponentsInChildren<Unit>();
+
         foreach (var squadUnit in squadUnits)
         {
-            squadUnit.setTarget(target);
+            squadUnit.SetTarget(target);
         };
-        
+
     }
 
-    public void addWaypoint(Vector3 pos)
+    public void AddWaypoint(Vector3 pos)
     {
+        var squadUnits = transform.GetComponentsInChildren<Unit>();
+
         foreach (var squadUnit in squadUnits)
         {
-            squadUnit.addWaypoint(pos);
-        } 
+            squadUnit.AddWaypoint(pos);
+        }
     }
 }

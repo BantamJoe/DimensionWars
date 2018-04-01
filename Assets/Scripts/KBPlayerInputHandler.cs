@@ -45,11 +45,16 @@ public class KBPlayerInputHandler : MonoBehaviour
     void Update()
     {
         mouseLook.LookRotation(transform, cam.transform);
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             player.TeleportTo(ray);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            player.SetSquadTarget(ray);
         }
     }
 }
