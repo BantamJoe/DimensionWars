@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 114920257270272724}
   - component: {fileID: 114824634888288486}
   - component: {fileID: 114880855590619662}
+  - component: {fileID: 114439325277639392}
   - component: {fileID: 195141624391404786}
   m_Layer: 0
   m_Name: Soldier
@@ -1099,6 +1100,21 @@ GameObject:
   - component: {fileID: 4674415915974836}
   m_Layer: 0
   m_Name: Geo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1908802404659406
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4587216643808036}
+  m_Layer: 0
+  m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1823,6 +1839,19 @@ Transform:
   m_Father: {fileID: 4826772258692584}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4587216643808036
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908802404659406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4674415915974836}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4594531213213612
 Transform:
   m_ObjectHideFlags: 1
@@ -1888,6 +1917,7 @@ Transform:
   m_Children:
   - {fileID: 4622161402281468}
   - {fileID: 4864983393185022}
+  - {fileID: 4587216643808036}
   m_Father: {fileID: 4961812099842214}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2165,7 +2195,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361545085550920}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.000000749014}
-  m_LocalPosition: {x: 0, y: 0, z: -8.13}
+  m_LocalPosition: {x: 0.39177442, y: 0.0000013113022, z: -7.8870835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4674415915974836}
@@ -2353,6 +2383,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 0}
+--- !u!114 &114439325277639392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361545085550920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a642e60c80b674f806888a00bd8ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1780640472300232, guid: 1ef1ce88858389d4fb13922d62f169b5, type: 2}
+  bulletSpawn: {fileID: 4587216643808036}
+  speed: 1000
 --- !u!114 &114824634888288486
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2379,6 +2423,9 @@ MonoBehaviour:
   mover: {fileID: 0}
   target: {fileID: 0}
   waypointTargetDistance: 3
+  gunCooldown: 0
+  squad: {fileID: 0}
+  weapon: {fileID: 0}
 --- !u!114 &114920257270272724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2390,8 +2437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7084861a9a7bf440b962d73134cfbc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testCondition: 0
   bt: {fileID: 0}
+  unit: {fileID: 0}
 --- !u!137 &137227456673360370
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
