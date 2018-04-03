@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
                 {
                     continue;
                 }
-                squad.AddWaypoint(hit.point);
+                squad.SetImmediateMoveTarget(hit.point);
             }
         }
     }
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             {
                 continue;
             }
-            squad.AddWaypoint(pos);
+            squad.SetImmediateMoveTarget(pos);
         }
     }
 

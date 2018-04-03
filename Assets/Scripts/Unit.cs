@@ -57,6 +57,12 @@ public class Unit : MonoBehaviour
         this.target = target;
     }
 
+    public void SetImmediateMoveTarget(Vector3 target)
+    {
+        waypointList.Clear();
+        AddWaypoint(target);
+    }
+
     public void AddWaypoint(Vector3 pos)
     {
         var isEmpty = waypointList.Count == 0;

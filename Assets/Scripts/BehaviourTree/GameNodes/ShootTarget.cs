@@ -10,14 +10,12 @@ public class ShootTarget : BehaviourNode
     {
         if (context.target != null)
         {
-            MonoBehaviour.print("Shot " + context.unit.target);
             context.unit.weapon.Shoot(context.target.gameObject);
             context.unit.gunCooldown += cooldown;
         }
 
         if (context.unit.target != null)
         {
-            MonoBehaviour.print("Shot " + context.unit.target);
             context.unit.weapon.Shoot(context.target.gameObject);
             context.unit.gunCooldown += cooldown;
         }

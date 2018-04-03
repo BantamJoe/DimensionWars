@@ -222,6 +222,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1166317845259620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4488131116358202}
+  m_Layer: 0
+  m_Name: RaycastTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1177626880653542
 GameObject:
   m_ObjectHideFlags: 1
@@ -480,6 +495,7 @@ GameObject:
   - component: {fileID: 114880855590619662}
   - component: {fileID: 114439325277639392}
   - component: {fileID: 195141624391404786}
+  - component: {fileID: 136231661184825360}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -1742,6 +1758,19 @@ Transform:
   m_Father: {fileID: 4276325813985956}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4488131116358202
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166317845259620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4961812099842214}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4504702940632896
 Transform:
   m_ObjectHideFlags: 1
@@ -2194,15 +2223,16 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361545085550920}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0.000000749014}
-  m_LocalPosition: {x: 0.39177442, y: 0.0000013113022, z: -7.8870835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4674415915974836}
   - {fileID: 4752107505330288}
+  - {fileID: 4488131116358202}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 900, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4975216802757426
 Transform:
   m_ObjectHideFlags: 1
@@ -2394,7 +2424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a642e60c80b674f806888a00bd8ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1780640472300232, guid: 1ef1ce88858389d4fb13922d62f169b5, type: 2}
   bulletSpawn: {fileID: 4587216643808036}
   speed: 1000
 --- !u!114 &114824634888288486
@@ -2439,6 +2468,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bt: {fileID: 0}
   unit: {fileID: 0}
+--- !u!136 &136231661184825360
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361545085550920}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5488511
+  m_Height: 1.7676988
+  m_Direction: 1
+  m_Center: {x: -0.00003822986, y: 0.7745471, z: 0.06270214}
 --- !u!137 &137227456673360370
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2597,11 +2639,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

@@ -38,6 +38,16 @@ public class Squad : MonoBehaviour
 
     }
 
+    public void SetImmediateMoveTarget(Vector3 pos)
+    {
+        var squadUnits = transform.GetComponentsInChildren<Unit>();
+
+        foreach (var squadUnit in squadUnits)
+        {
+            squadUnit.SetImmediateMoveTarget(pos);
+        }
+    }
+
     public void AddWaypoint(Vector3 pos)
     {
         var squadUnits = transform.GetComponentsInChildren<Unit>();

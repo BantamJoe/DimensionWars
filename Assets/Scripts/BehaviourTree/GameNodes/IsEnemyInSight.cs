@@ -16,8 +16,25 @@ public class IsEnemyInSight : BehaviourNode
                 var distance = Vector3.Distance(context.unit.transform.position, unit.transform.position);
                 if (distance < targetingDistance)
                 {
-                    context.target = unit;
-                    yield break;
+                    // Trace LOS
+                    var start = context.unit.transform.Find("RaycastTarget").transform.position;
+                    var end = unit.transform.Find("RaycastTarget").transform.position;
+                    var direction = end - start;
+                    var d = Vector3.Distance(start, end);
+                    RaycastHit hit;
+
+                    // If found target
+                    if (Physics.Raycast(start, direction, out hit, d))
+                    {
+                        // Check if valid target
+                        var hitUnit = hit.collider.GetComponent<Unit>();
+                        if (hitUnit == unit)
+                        {
+                            context.target = unit;
+                            yield break;
+                        }
+                    }
+
                 }
             }
 

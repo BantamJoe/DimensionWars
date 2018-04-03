@@ -20,7 +20,7 @@ public class SoldierBehaviourTree : MonoBehaviour {
         var attackSequence = bt.CreateNode<SequenceNode>();
 
         var isEnemyInSight = bt.CreateNode<IsEnemyInSight>();
-        isEnemyInSight.targetingDistance = 5;
+        isEnemyInSight.targetingDistance = 200;
 
         var canShoot = bt.CreateNode<CanShootTarget>();
 
