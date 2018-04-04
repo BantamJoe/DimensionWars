@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 114232208905223534}
   - component: {fileID: 114453939608911754}
   - component: {fileID: 114387018020655310}
+  - component: {fileID: 45716941824446264}
   m_Layer: 0
   m_Name: '[CameraRig]'
   m_TagString: Untagged
@@ -375,6 +376,14 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1721841833973670}
   m_Mesh: {fileID: 0}
+--- !u!45 &45716941824446264
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721841833973670}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: fb3b9b55c01d2194c816b2d469854e16, type: 2}
 --- !u!81 &81406165035059122
 AudioListener:
   m_ObjectHideFlags: 1
