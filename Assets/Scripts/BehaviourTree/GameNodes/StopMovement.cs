@@ -7,6 +7,7 @@ public class StopMovement : BehaviourNode
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {
         context.unit.mover.StopMovement();
-        yield break;
+        context.waitFor = 1;
+        yield return BehaviourStatus.Running;
     }
 }

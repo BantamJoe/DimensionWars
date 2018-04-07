@@ -25,7 +25,16 @@ public class BehaviourTree : MonoBehaviour
     {
         foreach (var status in root)
         {
-            yield return new WaitForFixedUpdate();
+            if (status == BehaviourStatus.Running && context.waitFor != 0)
+            {
+                var waitFor = context.waitFor;
+                context.waitFor = 0;
+                yield return new WaitForSeconds(waitFor);
+            }
+            else
+            {
+                yield return new WaitForFixedUpdate();
+            }
         }
     }
 

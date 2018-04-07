@@ -489,13 +489,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4961812099842214}
   - component: {fileID: 95662708746085388}
-  - component: {fileID: 114420412360884482}
-  - component: {fileID: 114920257270272724}
-  - component: {fileID: 114824634888288486}
-  - component: {fileID: 114880855590619662}
-  - component: {fileID: 114439325277639392}
   - component: {fileID: 195141624391404786}
   - component: {fileID: 136231661184825360}
+  - component: {fileID: 114420412360884482}
+  - component: {fileID: 114920257270272724}
+  - component: {fileID: 114880855590619662}
+  - component: {fileID: 114824634888288486}
+  - component: {fileID: 114439325277639392}
+  - component: {fileID: 114764843282075190}
   - component: {fileID: 114721212202698880}
   m_Layer: 0
   m_Name: Soldier
@@ -2438,6 +2439,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b4469796736d440a5f8210ca69f746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114764843282075190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361545085550920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94cf51f170af3504b91d8575c4e34870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  isDead: 0
 --- !u!114 &114824634888288486
 MonoBehaviour:
   m_ObjectHideFlags: 1
