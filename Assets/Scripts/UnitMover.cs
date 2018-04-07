@@ -27,4 +27,9 @@ public class UnitMover : MonoBehaviour
     {
         agent.isStopped = false;
     }
+
+    public bool IsMoving()
+    {
+        return agent.velocity != Vector3.zero;
+    }
 }

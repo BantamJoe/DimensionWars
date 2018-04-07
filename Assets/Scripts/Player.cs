@@ -6,6 +6,32 @@ public class Player : MonoBehaviour
 {
     public float height;
     public int team;
+    public List<Squad> squads = new List<Squad>();
+    public List<Squad> selectedSquads = new List<Squad>();
+
+    private void Start()
+    {
+        var squads = FindObjectsOfType<Squad>();
+        foreach (var squad in squads)
+        {
+            if (squad.team != team)
+            {
+                continue;
+            }
+            this.squads.Add(squad);
+        }
+    }
+
+    public void SelectSquad(int id)
+    {
+        var index = id - 1;
+        if (index >= 0 && index < squads.Count)
+        {
+            selectedSquads.Clear();
+            selectedSquads.Add(squads[index]);
+            print("Selected squad " + id);
+        }
+    }
 
     /// <summary>
     /// Sets the squad's target based on a given ray.
@@ -16,15 +42,22 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            var squads = FindObjectsOfType<Squad>();
-            foreach (var squad in squads)
+            if (hit.collider.tag == "CoverPoint")
             {
-                if (squad.team != team)
+                var target = hit.collider.transform.parent;
+                foreach (var squad in selectedSquads)
                 {
-                    continue;
+                    squad.SetCoverTarget(target.gameObject);
                 }
-                squad.SetImmediateMoveTarget(hit.point);
             }
+            else
+            {
+                foreach (var squad in selectedSquads)
+                {
+                    squad.SetImmediateMoveTarget(hit.point);
+                }
+            }
+
         }
     }
 
@@ -34,13 +67,8 @@ public class Player : MonoBehaviour
     /// <param name="pos">The vector3 position to add the waypoint.</param>
     public void SetSquadTarget(Vector3 pos)
     {
-        var squads = FindObjectsOfType<Squad>();
-        foreach (var squad in squads)
+        foreach (var squad in selectedSquads)
         {
-            if (squad.team != team)
-            {
-                continue;
-            }
             squad.SetImmediateMoveTarget(pos);
         }
     }

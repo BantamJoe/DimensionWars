@@ -58,7 +58,7 @@ public class SoldierBehaviourTree : MonoBehaviour
         {
             dieSequence,
             moveSequence,
-                        attackSequence,
+            attackSequence,
         };
 
         bt.root = root;

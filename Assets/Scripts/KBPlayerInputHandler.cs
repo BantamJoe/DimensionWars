@@ -56,5 +56,13 @@ public class KBPlayerInputHandler : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             player.SetSquadTarget(ray);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            player.SelectSquad(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            player.SelectSquad(2);
+        }
     }
 }
