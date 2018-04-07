@@ -29,6 +29,18 @@ public class SoldierBehaviourTree : MonoBehaviour
             die,
         };
 
+        // COVER SEQUENCE
+        var coverSequence = bt.CreateNode<SequenceNode>();
+        var isUnderAttack = bt.CreateNode<IsUnderAttack>();
+        var findCover = bt.CreateNode<FindCover>();
+                var startMovement2 = bt.CreateNode<StartMovement>();
+        coverSequence.children = new List<BehaviourNode>
+        {
+            isUnderAttack,
+            findCover,
+            startMovement2,
+        };
+
         // ATTACK SEQUENCE
         var attackSequence = bt.CreateNode<SequenceNode>();
         var isEnemyInSight = bt.CreateNode<IsEnemyInSight>();
@@ -40,6 +52,8 @@ public class SoldierBehaviourTree : MonoBehaviour
         attackSequence.children = new List<BehaviourNode>
         {
             isEnemyInSight,
+            findCover,
+            startMovement2,
             canShoot,
             stop,
             shoot,

@@ -12,10 +12,11 @@ public class UnitWeapon : MonoBehaviour
         var direction = target.transform.position - bulletSpawn.transform.position;
         Debug.DrawRay(bulletSpawn.position, direction, Color.yellow, 5 * Time.deltaTime);
 
+        var unit = GetComponent<Unit>();
         var health = target.GetComponent<UnitHealth>();
         if (health != null)
         {
-            health.TakeDamage(1);
+            health.TakeDamage(1, unit);
         }
     }
 }
