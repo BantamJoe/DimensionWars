@@ -19,6 +19,18 @@ public class SoldierBehaviourTree : MonoBehaviour
             unit = unit
         };
 
+        if (unit.unitClass == Unit.Class.HeavyAssault)
+        {
+            bt.root = HeavyAssaultBehaviour();
+        }
+        else
+        {
+            bt.root = RiflemanBehaviour();
+        }
+    }
+
+    BehaviourNode RiflemanBehaviour()
+    {
         var root = bt.CreateNode<SelectorNode>();
         root.children = new List<BehaviourNode>
         {
@@ -27,8 +39,18 @@ public class SoldierBehaviourTree : MonoBehaviour
             CoverSequence(),
             AttackSequence(),
         };
-
-        bt.root = root;
+        return root;
+    }
+    
+    BehaviourNode HeavyAssaultBehaviour()
+    {
+        var root = bt.CreateNode<SelectorNode>();
+        root.children = new List<BehaviourNode>
+        {
+            ChargeSequence(),
+            bt.CreateNode<StopMovement>(),
+        };
+        return root;
     }
 
     BehaviourNode DieSequence()
@@ -49,9 +71,7 @@ public class SoldierBehaviourTree : MonoBehaviour
         var attackSequence = bt.CreateNode<SequenceNode>();
         var isEnemyInSight = bt.CreateNode<IsEnemyInSight>();
         isEnemyInSight.targetingDistance = 100;
-        var findCover = bt.CreateNode<FindCover>();
         var canShoot = bt.CreateNode<CanShootTarget>();
-        var moveToTarget = bt.CreateNode<MoveToTarget>();
         var shoot = bt.CreateNode<ShootTarget>();
         shoot.cooldown = 1;
         attackSequence.children = new List<BehaviourNode>
@@ -87,5 +107,23 @@ public class SoldierBehaviourTree : MonoBehaviour
             moveToTarget,
         };
         return moveSequence;
+    }
+
+    BehaviourNode ChargeSequence()
+    {
+        var attackSequence = bt.CreateNode<SequenceNode>();
+        var isEnemyInSight = bt.CreateNode<IsEnemyInSight>();
+        isEnemyInSight.targetingDistance = 100;
+        var canShoot = bt.CreateNode<CanShootTarget>();
+        var shoot = bt.CreateNode<ShootTarget>();
+        shoot.cooldown = 1;
+        attackSequence.children = new List<BehaviourNode>
+        {
+            isEnemyInSight,
+            bt.CreateNode<ChargeTarget>(),
+            canShoot,
+            shoot,
+        };
+        return attackSequence;
     }
 }

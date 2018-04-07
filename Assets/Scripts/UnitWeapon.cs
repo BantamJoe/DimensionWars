@@ -9,8 +9,13 @@ public class UnitWeapon : MonoBehaviour
 
     public void Shoot(GameObject target)
     {
-        var direction = target.transform.position - bulletSpawn.transform.position;
-        Debug.DrawRay(bulletSpawn.position, direction, Color.yellow, 5 * Time.deltaTime);
+
+        var t = target.transform.Find("RaycastTarget");
+        if (t != null)
+        {
+            var direction = t.transform.position - bulletSpawn.transform.position;
+            Debug.DrawRay(bulletSpawn.position, direction, Color.yellow, 5 * Time.deltaTime);
+        }
 
         var unit = GetComponent<Unit>();
         var health = target.GetComponent<UnitHealth>();

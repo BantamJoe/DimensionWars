@@ -16,6 +16,9 @@ public class Unit : MonoBehaviour
 
     List<Vector3> waypointList = new List<Vector3>();
 
+    public enum Class { Rifleman, HeavyAssault, Sniper, MG }
+    public Class unitClass = Class.Rifleman;
+
     void Awake()
     {
         mover = GetComponent<UnitMover>();
