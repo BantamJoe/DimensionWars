@@ -10,16 +10,32 @@ public class ShootTarget : BehaviourNode
     {
         if (context.target != null)
         {
-            context.unit.weapon.Shoot(context.target.gameObject);
-            context.unit.gunCooldown += cooldown;
+            Shoot();
         }
 
         if (context.unit.target != null)
         {
-            context.unit.weapon.Shoot(context.target.gameObject);
-            context.unit.gunCooldown += cooldown;
+            Shoot();
+
         }
 
         yield break;
+    }
+
+    void Shoot()
+    {
+        // Shoot weapon
+        context.unit.weapon.Shoot(context.target.gameObject);
+        context.unit.gunCooldown += cooldown;
+
+        // Look at target
+        context.unit.transform.LookAt(context.target.transform);
+
+        // Update animation
+        var animController = context.unit.GetComponent<UnitAnimationController>();
+        if (animController != null)
+        {
+            animController.Shoot();
+        }
     }
 }

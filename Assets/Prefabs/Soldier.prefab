@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 114439325277639392}
   - component: {fileID: 195141624391404786}
   - component: {fileID: 136231661184825360}
+  - component: {fileID: 114721212202698880}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -2426,6 +2427,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 4587216643808036}
   speed: 1000
+--- !u!114 &114721212202698880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361545085550920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66b4469796736d440a5f8210ca69f746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114824634888288486
 MonoBehaviour:
   m_ObjectHideFlags: 1
