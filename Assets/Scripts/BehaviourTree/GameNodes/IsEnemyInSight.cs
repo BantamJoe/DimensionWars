@@ -23,6 +23,8 @@ public class IsEnemyInSight : BehaviourNode
                     var d = Vector3.Distance(start, end);
                     RaycastHit hit;
 
+                    //Debug.DrawRay(start, direction, Color.white, Time.deltaTime);
+
                     // If found target
                     if (Physics.Raycast(start, direction, out hit, d))
                     {

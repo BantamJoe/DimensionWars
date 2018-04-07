@@ -26,7 +26,7 @@ public class FindCover : BehaviourNode
             var root = target.transform.parent;
             var side = root.transform.Find("Front");
             var node = side.transform.Find("CoverPos2");
-            context.unit.SetImmediateMoveTarget(node.transform.position);
+            context.unit.mover.SetTarget(node.transform.position);
         }
         else
         {

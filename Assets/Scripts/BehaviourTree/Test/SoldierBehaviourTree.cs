@@ -19,7 +19,20 @@ public class SoldierBehaviourTree : MonoBehaviour
             unit = unit
         };
 
-        // DIE SEQUENCE
+        var root = bt.CreateNode<SelectorNode>();
+        root.children = new List<BehaviourNode>
+        {
+            DieSequence(),
+            MoveSequence(),
+            CoverSequence(),
+            AttackSequence(),
+        };
+
+        bt.root = root;
+    }
+
+    BehaviourNode DieSequence()
+    {
         var dieSequence = bt.CreateNode<SequenceNode>();
         var isDead = bt.CreateNode<IsDead>();
         var die = bt.CreateNode<Die>();
@@ -28,54 +41,51 @@ public class SoldierBehaviourTree : MonoBehaviour
             isDead,
             die,
         };
+        return dieSequence;
+    }
 
-        // COVER SEQUENCE
-        var coverSequence = bt.CreateNode<SequenceNode>();
-        var isUnderAttack = bt.CreateNode<IsUnderAttack>();
-        var findCover = bt.CreateNode<FindCover>();
-                var startMovement2 = bt.CreateNode<StartMovement>();
-        coverSequence.children = new List<BehaviourNode>
-        {
-            isUnderAttack,
-            findCover,
-            startMovement2,
-        };
-
-        // ATTACK SEQUENCE
+    BehaviourNode AttackSequence()
+    {
         var attackSequence = bt.CreateNode<SequenceNode>();
         var isEnemyInSight = bt.CreateNode<IsEnemyInSight>();
         isEnemyInSight.targetingDistance = 100;
+        var findCover = bt.CreateNode<FindCover>();
         var canShoot = bt.CreateNode<CanShootTarget>();
-        var stop = bt.CreateNode<StopMovement>();
+        var moveToTarget = bt.CreateNode<MoveToTarget>();
         var shoot = bt.CreateNode<ShootTarget>();
         shoot.cooldown = 1;
         attackSequence.children = new List<BehaviourNode>
         {
             isEnemyInSight,
-            findCover,
-            startMovement2,
             canShoot,
-            stop,
             shoot,
         };
-
-        // MOVE SEQUENCE
-        var moveSequence = bt.CreateNode<SequenceNode>();
-        var startMovement = bt.CreateNode<StartMovement>();
-        moveSequence.children = new List<BehaviourNode>
-        {
-            startMovement,
-        };
-
-        var root = bt.CreateNode<SelectorNode>();
-        root.children = new List<BehaviourNode>
-        {
-            dieSequence,
-            moveSequence,
-            attackSequence,
-        };
-
-        bt.root = root;
+        return attackSequence;
     }
 
+    BehaviourNode CoverSequence()
+    {
+        var coverSequence = bt.CreateNode<SequenceNode>();
+        var isUnderAttack = bt.CreateNode<IsUnderAttack>();
+        var findCover = bt.CreateNode<FindCover>();
+        var moveToTarget = bt.CreateNode<MoveToTarget>();
+        coverSequence.children = new List<BehaviourNode>
+        {
+            isUnderAttack,
+            findCover,
+            moveToTarget,
+        };
+        return coverSequence;
+    }
+
+    BehaviourNode MoveSequence()
+    {
+        var moveSequence = bt.CreateNode<SequenceNode>();
+        var moveToTarget = bt.CreateNode<MoveToTarget>();
+        moveSequence.children = new List<BehaviourNode>
+        {
+            moveToTarget,
+        };
+        return moveSequence;
+    }
 }

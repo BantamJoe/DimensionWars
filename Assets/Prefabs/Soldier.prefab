@@ -2450,7 +2450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94cf51f170af3504b91d8575c4e34870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 7
+  health: 10
   isDead: 0
   attacker: {fileID: 0}
   isUnderAttack: 0
@@ -2465,6 +2465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27191e4f73c4bd44ae9d48affa6d8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 0}
 --- !u!114 &114880855590619662
 MonoBehaviour:
   m_ObjectHideFlags: 1

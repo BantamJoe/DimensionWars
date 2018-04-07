@@ -26,6 +26,7 @@ public class Unit : MonoBehaviour
     void Update()
     {
         gunCooldown -= Time.deltaTime;
+        gunCooldown = Mathf.Max(gunCooldown, 0);
 
         if (waypointList.Count != 0)
         {

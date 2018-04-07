@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class UnitMover : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     void Awake()
     {
