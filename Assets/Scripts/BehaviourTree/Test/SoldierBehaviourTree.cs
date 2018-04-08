@@ -57,7 +57,6 @@ public class SoldierBehaviourTree : MonoBehaviour
         {
             DieSequence(),
             ChargeSequence(),
-            bt.CreateNode<StopMovement>(),
         };
         return root;
     }
