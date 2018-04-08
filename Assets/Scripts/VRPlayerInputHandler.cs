@@ -70,12 +70,15 @@ public class VRPlayerInputHandler : MonoBehaviour
     /// </summary>
     private void ShootRay()
     {
+        /*
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
             // Since we hit something, teleport to it.
             // TODO: Ensure we don't teleport anywhere that isn't a squad/unit, etc.
             mPlayer.TeleportTo(hit.collider.transform.position);
-        }
+        }*/
+        Ray mRay = new Ray(transform.position, transform.forward);
+        mPlayer.TeleportTo(mRay);
     }
 }

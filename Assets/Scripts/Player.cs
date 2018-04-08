@@ -62,18 +62,6 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// Overloaded SetSquadTarget to accept a Vector3.
-    /// </summary>
-    /// <param name="pos">The vector3 position to add the waypoint.</param>
-    public void SetSquadTarget(Vector3 pos)
-    {
-        foreach (var squad in selectedSquads)
-        {
-            squad.SetImmediateMoveTarget(pos);
-        }
-    }
-
-    /// <summary>
     /// Teleports the player based on a given Ray
     /// </summary>
     /// <param name="ray">The ray to process and shoot, then move to if we hit something.</param>
@@ -90,18 +78,5 @@ public class Player : MonoBehaviour
             // Set the player's positions.
             transform.position = newPos;
         }
-    }
-
-    /// <summary>
-    /// Overloaded TeleportTo to also accept a Vector3 from a RayCast done through VR.
-    /// </summary>
-    /// <param name="pos">The position to move to.</param>
-    public void TeleportTo(Vector3 pos)
-    {
-        // We give an offset Y, and keep it throughout.
-        Vector3 newPos = new Vector3(pos.x, height, pos.z);
-
-        // Set the new positions for the player
-        transform.position = newPos;
     }
 }
