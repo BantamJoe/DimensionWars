@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShootTarget : BehaviourNode
 {
-    public float cooldown;
+    public float cooldown = 1;
 
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {

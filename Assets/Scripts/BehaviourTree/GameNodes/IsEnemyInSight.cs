@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class IsEnemyInSight : BehaviourNode
 {
-    public float targetingDistance;
+    public float targetingDistance = 100;
+
+    public IsEnemyInSight Initialize(float targetingDistance)
+    {
+        this.targetingDistance = targetingDistance;
+        return this;
+    }
 
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {

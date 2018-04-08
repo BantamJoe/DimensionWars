@@ -75,92 +75,72 @@ public class SoldierBehaviourTree : MonoBehaviour
 
     BehaviourNode DieSequence()
     {
-        var dieSequence = bt.CreateNode<SequenceNode>();
-        var isDead = bt.CreateNode<IsDead>();
-        var die = bt.CreateNode<Die>();
-        dieSequence.children = new List<BehaviourNode>
+        var sequence = bt.CreateNode<SequenceNode>();
+        sequence.children = new List<BehaviourNode>
         {
-            isDead,
-            die,
+            bt.CreateNode<IsDead>(),
+            bt.CreateNode<Die>(),
         };
-        return dieSequence;
+        return sequence;
     }
 
     BehaviourNode AttackSequence(float range = 100)
     {
-        var attackSequence = bt.CreateNode<SequenceNode>();
-        var isEnemyInSight = bt.CreateNode<IsEnemyInSight>();
-        isEnemyInSight.targetingDistance = range;
-        var canShoot = bt.CreateNode<CanShootTarget>();
-        var shoot = bt.CreateNode<ShootTarget>();
-        shoot.cooldown = 1;
-        attackSequence.children = new List<BehaviourNode>
+        var sequence = bt.CreateNode<SequenceNode>();
+        sequence.children = new List<BehaviourNode>
         {
-            isEnemyInSight,
-            canShoot,
-            shoot,
+            bt.CreateNode<IsEnemyInSight>().Initialize(range),
+            bt.CreateNode<CanShootTarget>(),
+            bt.CreateNode<ShootTarget>(),
         };
-        return attackSequence;
+        return sequence;
     }
 
     BehaviourNode CoverSequence()
     {
-        var coverSequence = bt.CreateNode<SequenceNode>();
-        var isUnderAttack = bt.CreateNode<IsUnderAttack>();
-        var findCover = bt.CreateNode<FindCover>();
-        var moveToTarget = bt.CreateNode<MoveToTarget>();
-        coverSequence.children = new List<BehaviourNode>
+        var sequence = bt.CreateNode<SequenceNode>();
+        sequence.children = new List<BehaviourNode>
         {
-            isUnderAttack,
-            findCover,
-            moveToTarget,
+            bt.CreateNode<IsUnderAttack>(),
+            bt.CreateNode<FindCover>(),
+            bt.CreateNode<MoveToTarget>(),
         };
-        return coverSequence;
+        return sequence;
     }
 
     BehaviourNode MoveSequence()
     {
-        var moveSequence = bt.CreateNode<SequenceNode>();
-        var moveToTarget = bt.CreateNode<MoveToTarget>();
-        moveSequence.children = new List<BehaviourNode>
+        var sequence = bt.CreateNode<SequenceNode>();
+        sequence.children = new List<BehaviourNode>
         {
-            moveToTarget,
+            bt.CreateNode<MoveToTarget>(),
         };
-        return moveSequence;
+        return sequence;
     }
 
     BehaviourNode ChargeSequence()
     {
-        var seq = bt.CreateNode<SequenceNode>();
-        var isEnemyInSight = bt.CreateNode<IsEnemyInSight>();
-        isEnemyInSight.targetingDistance = 100;
-        var canShoot = bt.CreateNode<CanShootTarget>();
-        var shoot = bt.CreateNode<ShootTarget>();
-        shoot.cooldown = 1;
-        seq.children = new List<BehaviourNode>
+        var sequence = bt.CreateNode<SequenceNode>();
+        sequence.children = new List<BehaviourNode>
         {
-            isEnemyInSight,
+            bt.CreateNode<IsEnemyInSight>(),
             bt.CreateNode<ChargeTarget>(),
-            canShoot,
-            shoot,
+            bt.CreateNode<CanShootTarget>(),
+            bt.CreateNode<ShootTarget>(),
         };
-        return seq;
+        return sequence;
     }
 
     BehaviourNode RetreatSequence()
     {
-        var isEnemyInSight = bt.CreateNode<IsEnemyInSight>();
-        var coverSequence = bt.CreateNode<SequenceNode>();
-        var isUnderAttack = bt.CreateNode<IsUnderAttack>();
-        var findCover = bt.CreateNode<FindCover>();
-        var moveToTarget = bt.CreateNode<MoveToTarget>();
-        coverSequence.children = new List<BehaviourNode>
+        var sequence = bt.CreateNode<SequenceNode>();
+        sequence.children = new List<BehaviourNode>
         {
-            isUnderAttack,
-            isEnemyInSight,
+            bt.CreateNode<IsUnderAttack>(),
+            bt.CreateNode<IsEnemyInSight>(),
             bt.CreateNode<Retreat>(),
-            moveToTarget,
+            bt.CreateNode<MoveToTarget>(),
         };
-        return coverSequence;
+        return sequence;
     }
 }
