@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -70,6 +70,10 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+            // Start the fading effect from black
+            SteamVR_Fade.Start(Color.black, 0);
+            // To nothing
+            SteamVR_Fade.Start(Color.clear, 1);
             Vector3 point = hit.point;
 
             // We give an offset of 2.0f for Y, and keep it throughout.
