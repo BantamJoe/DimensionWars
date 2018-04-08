@@ -82,6 +82,10 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+            // Start the fading effect from black
+            SteamVR_Fade.Start(Color.black, 0);
+            // To nothing
+            SteamVR_Fade.Start(Color.clear, 1);
             Vector3 point = hit.point;
 
             // We give an offset of 2.0f for Y, and keep it throughout.
@@ -98,6 +102,11 @@ public class Player : MonoBehaviour
     /// <param name="pos">The position to move to.</param>
     public void TeleportTo(Vector3 pos)
     {
+        // Start the fading effect from black
+        SteamVR_Fade.Start(Color.black, 0);
+        // To nothing
+        SteamVR_Fade.Start(Color.clear, 1);
+
         // We give an offset Y, and keep it throughout.
         Vector3 newPos = new Vector3(pos.x, height, pos.z);
 
