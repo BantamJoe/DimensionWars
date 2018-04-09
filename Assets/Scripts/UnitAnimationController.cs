@@ -67,7 +67,7 @@ public class UnitAnimationController : MonoBehaviour
 
         anim.SetBool("isFiring", false);
 
-		//Turn off particle f
+		//Turn off particle effect
 		this.transform.GetChild(1) // hips
 			.GetChild(2) // spine
 			.GetChild(0) //spine 1
@@ -77,7 +77,7 @@ public class UnitAnimationController : MonoBehaviour
 			.GetChild(0) // rightfore arm
 			.GetChild(0) //right hand
 			.GetChild(5) //riflen
-			.GetChild(2).gameObject.SetActive(false); // Muzzle effect
+			.GetChild(2).gameObject.SetActive(false); // tracer
 
 		this.transform.GetChild(1) // hips
 			.GetChild(2) // spine
@@ -88,6 +88,6 @@ public class UnitAnimationController : MonoBehaviour
 			.GetChild(0) // rightfore arm
 			.GetChild(0) //right hand
 			.GetChild(5) //riflen
-			.GetChild(3).gameObject.SetActive(false); // Tracer
+			.GetChild(3).gameObject.SetActive(false); // muzzke
     }
 }
