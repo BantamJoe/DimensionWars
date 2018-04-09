@@ -42,7 +42,6 @@ public class SoldierBehaviourTree : MonoBehaviour
         var root = bt.CreateNode<SelectorNode>();
         root.children = new List<BehaviourNode>
         {
-            DieSequence(),
             MoveSequence(),
             CoverSequence(),
             AttackSequence(),
@@ -55,7 +54,6 @@ public class SoldierBehaviourTree : MonoBehaviour
         var root = bt.CreateNode<SelectorNode>();
         root.children = new List<BehaviourNode>
         {
-            DieSequence(),
             ChargeSequence(),
         };
         return root;
@@ -66,22 +64,10 @@ public class SoldierBehaviourTree : MonoBehaviour
         var root = bt.CreateNode<SelectorNode>();
         root.children = new List<BehaviourNode>
         {
-            DieSequence(),
             RetreatSequence(),
             AttackSequence(150),
         };
         return root;
-    }
-
-    BehaviourNode DieSequence()
-    {
-        var sequence = bt.CreateNode<SequenceNode>();
-        sequence.children = new List<BehaviourNode>
-        {
-            bt.CreateNode<IsDead>(),
-            bt.CreateNode<Die>(),
-        };
-        return sequence;
     }
 
     BehaviourNode AttackSequence(float range = 100)

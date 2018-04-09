@@ -6,7 +6,8 @@ public class Die : BehaviourNode
 {
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {
-        Destroy(context.unit.gameObject);
+        //Destroy(context.unit.gameObject, 1);
+
         yield break;
     }
 }

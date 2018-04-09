@@ -17,6 +17,12 @@ public class IsEnemyInSight : BehaviourNode
         var units = FindObjectsOfType<Unit>();
         foreach (var unit in units)
         {
+            var targetHealth = unit.GetComponent<UnitHealth>();
+            if (targetHealth.isDead)
+            {
+                continue;
+            }
+
             if (unit.squad.team != context.unit.squad.team)
             {
                 var distance = Vector3.Distance(context.unit.transform.position, unit.transform.position);
