@@ -33,6 +33,5 @@ public class UnitHealth : MonoBehaviour
         isUnderAttack = true;
         yield return new WaitForSeconds(1);
         isUnderAttack = false;
-        attacker = null;
     }
 }

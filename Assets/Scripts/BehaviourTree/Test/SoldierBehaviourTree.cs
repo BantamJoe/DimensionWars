@@ -70,7 +70,7 @@ public class SoldierBehaviourTree : MonoBehaviour
         return root;
     }
 
-    BehaviourNode AttackSequence(float range = 100)
+    BehaviourNode AttackSequence(float range = 60)
     {
         var sequence = bt.CreateNode<SequenceNode>();
         sequence.children = new List<BehaviourNode>
@@ -123,7 +123,6 @@ public class SoldierBehaviourTree : MonoBehaviour
         sequence.children = new List<BehaviourNode>
         {
             bt.CreateNode<IsUnderAttack>(),
-            bt.CreateNode<SetTarget>(),
             bt.CreateNode<Retreat>(),
             bt.CreateNode<MoveToDestination>(),
         };

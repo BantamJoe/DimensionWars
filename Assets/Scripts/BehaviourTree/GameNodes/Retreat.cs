@@ -13,14 +13,18 @@ public class Retreat : BehaviourNode
             yield break;
         }
 
-        var attackDirection = context.target.transform.position - context.unit.transform.position;
-        attackDirection.Normalize();
+        var health = context.unit.GetComponent<UnitHealth>();
+        var retreatDirection = context.unit.transform.position - health.attacker.transform.position;
+        retreatDirection.Normalize();
+        retreatDirection *= 50f;
 
-        var moveTarget = attackDirection * 10.0f;
+        Debug.DrawLine(context.unit.transform.position, health.attacker.transform.position, Color.blue, 100, false);
 
-        Debug.DrawLine(context.unit.transform.position, moveTarget, Color.yellow, 100);
+        var retreatTarget = context.unit.transform.position + retreatDirection;
 
-        context.unit.mover.SetTarget(moveTarget);
+        Debug.DrawLine(context.unit.transform.position, retreatTarget, Color.magenta, 100, false);
+
+        context.unit.mover.SetTarget(retreatTarget);
         hasRetreated = true;
         yield break;
     }
