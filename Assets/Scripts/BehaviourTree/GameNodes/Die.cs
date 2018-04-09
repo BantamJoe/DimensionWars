@@ -15,7 +15,7 @@ public class Die : BehaviourNode
         }
         */
 
-        Destroy(context.unit.gameObject);
+        //Destroy(context.unit.gameObject, 1);
 
         yield break;
     }
