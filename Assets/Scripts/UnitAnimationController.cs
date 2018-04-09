@@ -9,11 +9,13 @@ public class UnitAnimationController : MonoBehaviour
 {
     Animator anim;
     NavMeshAgent ag;
+	Unit unit;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         ag = GetComponent<NavMeshAgent>();
+		unit = GetComponent<Unit> ();
     }
 
     private void Update()
@@ -41,53 +43,15 @@ public class UnitAnimationController : MonoBehaviour
         }
         anim.SetBool("isFiring", true);
 
-		this.transform.GetChild(1) // hips
-			.GetChild(2) // spine
-			.GetChild(0) //spine 1
-			.GetChild(0) //spine 2
-			.GetChild(2) //right should
-			.GetChild(0) // right arm
-			.GetChild(0) // rightfore arm
-			.GetChild(0) //right hand
-			.GetChild(5) //riflen
-			.GetChild(2).gameObject.SetActive(true); // Muzzle effect
+		unit.muzzleEffect.SetActive(true);
+		unit.tracerEffect.SetActive (true);
 
-		this.transform.GetChild(1) // hips
-			.GetChild(2) // spine
-			.GetChild(0) //spine 1
-			.GetChild(0) //spine 2
-			.GetChild(2) //right should
-			.GetChild(0) // right arm
-			.GetChild(0) // rightfore arm
-			.GetChild(0) //right hand
-			.GetChild(5) //riflen
-			.GetChild(3).gameObject.SetActive(true); // Tracer
-		
         yield return new WaitForSeconds(1);
 
         anim.SetBool("isFiring", false);
 
 		//Turn off particle effect
-		this.transform.GetChild(1) // hips
-			.GetChild(2) // spine
-			.GetChild(0) //spine 1
-			.GetChild(0) //spine 2
-			.GetChild(2) //right should
-			.GetChild(0) // right arm
-			.GetChild(0) // rightfore arm
-			.GetChild(0) //right hand
-			.GetChild(5) //riflen
-			.GetChild(2).gameObject.SetActive(false); // tracer
-
-		this.transform.GetChild(1) // hips
-			.GetChild(2) // spine
-			.GetChild(0) //spine 1
-			.GetChild(0) //spine 2
-			.GetChild(2) //right should
-			.GetChild(0) // right arm
-			.GetChild(0) // rightfore arm
-			.GetChild(0) //right hand
-			.GetChild(5) //riflen
-			.GetChild(3).gameObject.SetActive(false); // muzzke
+		unit.muzzleEffect.SetActive(false);
+		unit.tracerEffect.SetActive (false);
     }
 }
