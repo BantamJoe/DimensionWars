@@ -6,7 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class UnitMover : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     void Awake()
     {
@@ -26,5 +26,10 @@ public class UnitMover : MonoBehaviour
     public void ResumeMovement()
     {
         agent.isStopped = false;
+    }
+
+    public bool IsMoving()
+    {
+        return agent.velocity != Vector3.zero;
     }
 }

@@ -16,9 +16,14 @@ public class VRPlayerInputHandler : MonoBehaviour
     public Player mPlayer;
     [Tooltip("Whether or not the trigger is pressed.")]
     public bool triggerButtonDown = false;
+    [Tooltip("Whether or not the menu button is pressed.")]
+    public bool menuButtonDown = false;
 
     // The trigger button Valve code to parse with GetPressDown()
     private Valve.VR.EVRButtonId triggerButton = Valve.VR.EVRButtonId.k_EButton_SteamVR_Trigger;
+
+    // The menu button trigger Valve code to parse with GetPressDown()
+    private Valve.VR.EVRButtonId menuButton = Valve.VR.EVRButtonId.k_EButton_ApplicationMenu;
 
     // Returns the index ID of the controller (determined at run time)
     private SteamVR_Controller.Device controller
@@ -58,10 +63,18 @@ public class VRPlayerInputHandler : MonoBehaviour
         // Check to see if we pressed the trigger
         triggerButtonDown = controller.GetPressDown(triggerButton);
 
+        // Check to see if menu button was pressed
+        menuButtonDown = controller.GetPressDown(menuButton);
+
         // If we did press the trigger, shoot ray.
         if (triggerButtonDown)
         {
             ShootRay();
+        }
+
+        if (menuButtonDown)
+        {
+            MoveSquadRequest();
         }
     }
 
@@ -70,12 +83,16 @@ public class VRPlayerInputHandler : MonoBehaviour
     /// </summary>
     private void ShootRay()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
-        {
-            // Since we hit something, teleport to it.
-            // TODO: Ensure we don't teleport anywhere that isn't a squad/unit, etc.
-            mPlayer.TeleportTo(hit.collider.transform.position);
-        }
+        Ray mRay = new Ray(transform.position, transform.forward);
+        mPlayer.TeleportTo(mRay);
+    }
+
+    /// <summary>
+    /// Moves the squad with a given ray through Player.cs
+    /// </summary>
+    private void MoveSquadRequest()
+    {
+        Ray mRay = new Ray(transform.position, transform.forward);
+        mPlayer.SetSquadTarget(mRay);
     }
 }

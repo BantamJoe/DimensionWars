@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(UnitMover))]
+[RequireComponent(typeof(UnitWeapon))]
 public class Unit : MonoBehaviour
 {
     public bool isSelected;
@@ -11,18 +12,24 @@ public class Unit : MonoBehaviour
     public float waypointTargetDistance;
     public float gunCooldown;
     public Squad squad;
+    public UnitWeapon weapon;
 
     List<Vector3> waypointList = new List<Vector3>();
+
+    public enum Class { Rifleman, HeavyAssault, Sniper, MG }
+    public Class unitClass = Class.Rifleman;
 
     void Awake()
     {
         mover = GetComponent<UnitMover>();
         squad = transform.parent.GetComponent<Squad>();
+        weapon = GetComponent<UnitWeapon>();
     }
 
     void Update()
     {
         gunCooldown -= Time.deltaTime;
+        gunCooldown = Mathf.Max(gunCooldown, 0);
 
         if (waypointList.Count != 0)
         {
@@ -52,6 +59,12 @@ public class Unit : MonoBehaviour
     public void SetTarget(Unit target)
     {
         this.target = target;
+    }
+
+    public void SetImmediateMoveTarget(Vector3 target)
+    {
+        waypointList.Clear();
+        AddWaypoint(target);
     }
 
     public void AddWaypoint(Vector3 pos)

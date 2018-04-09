@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,32 @@ public class Player : MonoBehaviour
 {
     public float height;
     public int team;
+    public List<Squad> squads = new List<Squad>();
+    public List<Squad> selectedSquads = new List<Squad>();
+
+    private void Start()
+    {
+        var squads = FindObjectsOfType<Squad>();
+        foreach (var squad in squads)
+        {
+            if (squad.team != team)
+            {
+                continue;
+            }
+            this.squads.Add(squad);
+        }
+    }
+
+    public void SelectSquad(int id)
+    {
+        var index = id - 1;
+        if (index >= 0 && index < squads.Count)
+        {
+            selectedSquads.Clear();
+            selectedSquads.Add(squads[index]);
+            print("Selected squad " + id);
+        }
+    }
 
     /// <summary>
     /// Sets the squad's target based on a given ray.
@@ -16,32 +42,22 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            var squads = FindObjectsOfType<Squad>();
-            foreach (var squad in squads)
+            if (hit.collider.tag == "CoverPoint")
             {
-                if (squad.team != team)
+                var target = hit.collider.transform.parent;
+                foreach (var squad in selectedSquads)
                 {
-                    continue;
+                    squad.SetCoverTarget(target.gameObject);
                 }
-                squad.AddWaypoint(hit.point);
             }
-        }
-    }
-
-    /// <summary>
-    /// Overloaded SetSquadTarget to accept a Vector3.
-    /// </summary>
-    /// <param name="pos">The vector3 position to add the waypoint.</param>
-    public void SetSquadTarget(Vector3 pos)
-    {
-        var squads = FindObjectsOfType<Squad>();
-        foreach (var squad in squads)
-        {
-            if (squad.team != team)
+            else
             {
-                continue;
+                foreach (var squad in selectedSquads)
+                {
+                    squad.SetImmediateMoveTarget(hit.point);
+                }
             }
-            squad.AddWaypoint(pos);
+
         }
     }
 
@@ -54,6 +70,10 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+            // Start the fading effect from black
+            SteamVR_Fade.Start(Color.black, 0);
+            // To nothing
+            SteamVR_Fade.Start(Color.clear, 1);
             Vector3 point = hit.point;
 
             // We give an offset of 2.0f for Y, and keep it throughout.
@@ -62,18 +82,5 @@ public class Player : MonoBehaviour
             // Set the player's positions.
             transform.position = newPos;
         }
-    }
-
-    /// <summary>
-    /// Overloaded TeleportTo to also accept a Vector3 from a RayCast done through VR.
-    /// </summary>
-    /// <param name="pos">The position to move to.</param>
-    public void TeleportTo(Vector3 pos)
-    {
-        // We give an offset Y, and keep it throughout.
-        Vector3 newPos = new Vector3(pos.x, height, pos.z);
-
-        // Set the new positions for the player
-        transform.position = newPos;
     }
 }
