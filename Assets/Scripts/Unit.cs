@@ -14,6 +14,12 @@ public class Unit : MonoBehaviour
     public Squad squad;
     public UnitWeapon weapon;
 
+	public GameObject muzzleEffect_prefab;
+	public GameObject tracerEffect_prefab;
+
+	public GameObject muzzleEffect;
+	public GameObject tracerEffect;
+
     List<Vector3> waypointList = new List<Vector3>();
 
     public enum Class { Rifleman, HeavyAssault, Sniper, MG }
@@ -25,133 +31,57 @@ public class Unit : MonoBehaviour
         squad = transform.parent.GetComponent<Squad>();
         weapon = GetComponent<UnitWeapon>();
 
+		muzzleEffect = Instantiate(muzzleEffect_prefab, this.transform.GetChild(1) // hips
+			.GetChild(2) // spine
+			.GetChild(0) //spine 1
+			.GetChild(0) //spine 2
+			.GetChild(2) //right should
+			.GetChild(0) // right arm
+			.GetChild(0) // rightfore arm
+			.GetChild(0) //right hand
+			.GetChild(5));
+
+		tracerEffect = Instantiate(tracerEffect_prefab, this.transform.GetChild(1) // hips
+			.GetChild(2) // spine
+			.GetChild(0) //spine 1
+			.GetChild(0) //spine 2
+			.GetChild(2) //right should
+			.GetChild(0) // right arm
+			.GetChild(0) // rightfore arm
+			.GetChild(0) //right hand
+			.GetChild(5));
+
 		//Set unit muzzle color
 		switch (unitClass) {
 		case Class.Rifleman:
 			{
-				this.transform.GetChild(1) // hips
-					.GetChild(2) // spine
-					.GetChild(0) //spine 1
-					.GetChild(0) //spine 2
-					.GetChild(2) //right should
-					.GetChild(0) // right arm
-					.GetChild(0) // rightfore arm
-					.GetChild(0) //right hand
-					.GetChild(5) //riflen
-					.GetChild(2).gameObject.GetComponent<ParticleSystem>().startColor = Color.red;
+				tracerEffect.GetComponent<ParticleSystem>().startColor = Color.red;
+				muzzleEffect.GetComponent<ParticleSystem>().startColor = Color.red;
 
-				this.transform.GetChild(1) // hips
-					.GetChild(2) // spine
-					.GetChild(0) //spine 1
-					.GetChild(0) //spine 2
-					.GetChild(2) //right should
-					.GetChild(0) // right arm
-					.GetChild(0) // rightfore arm
-					.GetChild(0) //right hand
-					.GetChild(5) //riflen
-					.GetChild(3).gameObject.GetComponent<ParticleSystem>().startColor = Color.red;
 				break;
 			}
 		case Class.HeavyAssault:
 			{
-				this.transform.GetChild(1) // hips
-					.GetChild(2) // spine
-					.GetChild(0) //spine 1
-					.GetChild(0) //spine 2
-					.GetChild(2) //right should
-					.GetChild(0) // right arm
-					.GetChild(0) // rightfore arm
-					.GetChild(0) //right hand
-					.GetChild(5) //riflen
-					.GetChild(2).gameObject.GetComponent<ParticleSystem>().startColor = Color.cyan;
+				tracerEffect.GetComponent<ParticleSystem>().startColor = Color.cyan;
+				muzzleEffect.GetComponent<ParticleSystem>().startColor = Color.cyan;
 
-				this.transform.GetChild(1) // hips
-					.GetChild(2) // spine
-					.GetChild(0) //spine 1
-					.GetChild(0) //spine 2
-					.GetChild(2) //right should
-					.GetChild(0) // right arm
-					.GetChild(0) // rightfore arm
-					.GetChild(0) //right hand
-					.GetChild(5) //riflen
-					.GetChild(3).gameObject.GetComponent<ParticleSystem>().startColor = Color.cyan;
 				break;
 			}
 		case Class.Sniper:
 			{
-				this.transform.GetChild(1) // hips
-					.GetChild(2) // spine
-					.GetChild(0) //spine 1
-					.GetChild(0) //spine 2
-					.GetChild(2) //right should
-					.GetChild(0) // right arm
-					.GetChild(0) // rightfore arm
-					.GetChild(0) //right hand
-					.GetChild(5) //riflen
-					.GetChild(2).gameObject.GetComponent<ParticleSystem>().startColor = Color.magenta;
+				tracerEffect.GetComponent<ParticleSystem>().startColor = Color.magenta;
+				muzzleEffect.GetComponent<ParticleSystem>().startColor = Color.magenta;
 
-				this.transform.GetChild(1) // hips
-					.GetChild(2) // spine
-					.GetChild(0) //spine 1
-					.GetChild(0) //spine 2
-					.GetChild(2) //right should
-					.GetChild(0) // right arm
-					.GetChild(0) // rightfore arm
-					.GetChild(0) //right hand
-					.GetChild(5) //riflen
-					.GetChild(3).gameObject.GetComponent<ParticleSystem>().startColor = Color.magenta;
 				break;
 			}
 		case Class.MG:
 			{
-				this.transform.GetChild(1) // hips
-					.GetChild(2) // spine
-					.GetChild(0) //spine 1
-					.GetChild(0) //spine 2
-					.GetChild(2) //right should
-					.GetChild(0) // right arm
-					.GetChild(0) // rightfore arm
-					.GetChild(0) //right hand
-					.GetChild(5) //riflen
-					.GetChild(2).gameObject.GetComponent<ParticleSystem>().startColor = Color.green;
+				tracerEffect.GetComponent<ParticleSystem>().startColor = Color.green;
+				muzzleEffect.GetComponent<ParticleSystem>().startColor = Color.green;
 
-				this.transform.GetChild(1) // hips
-					.GetChild(2) // spine
-					.GetChild(0) //spine 1
-					.GetChild(0) //spine 2
-					.GetChild(2) //right should
-					.GetChild(0) // right arm
-					.GetChild(0) // rightfore arm
-					.GetChild(0) //right hand
-					.GetChild(5) //riflen
-					.GetChild(3).gameObject.GetComponent<ParticleSystem>().startColor = Color.green;
 				break;
 			}
 		}
-
-
-		//Turn off particle effect
-		this.transform.GetChild(1) // hips
-			.GetChild(2) // spine
-			.GetChild(0) //spine 1
-			.GetChild(0) //spine 2
-			.GetChild(2) //right should
-			.GetChild(0) // right arm
-			.GetChild(0) // rightfore arm
-			.GetChild(0) //right hand
-			.GetChild(5) //riflen
-			.GetChild(2).gameObject.SetActive(false); // tracer
-
-		this.transform.GetChild(1) // hips
-			.GetChild(2) // spine
-			.GetChild(0) //spine 1
-			.GetChild(0) //spine 2
-			.GetChild(2) //right should
-			.GetChild(0) // right arm
-			.GetChild(0) // rightfore arm
-			.GetChild(0) //right hand
-			.GetChild(5) //riflen
-			.GetChild(3).gameObject.SetActive(false); // muzzke
     }
 
     void Update()
