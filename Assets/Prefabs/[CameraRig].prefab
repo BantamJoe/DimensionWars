@@ -88,7 +88,8 @@ GameObject:
   - component: {fileID: 4892627948969978}
   - component: {fileID: 20406329413170810}
   - component: {fileID: 124539232263294808}
-  - component: {fileID: 114725586801477792}
+  - component: {fileID: 114296402073924892}
+  - component: {fileID: 114223090703903644}
   m_Layer: 0
   m_Name: Camera (eye)
   m_TagString: MainCamera
@@ -108,7 +109,6 @@ GameObject:
   - component: {fileID: 23456807642964112}
   - component: {fileID: 33770595917482508}
   - component: {fileID: 114374627232159540}
-  - component: {fileID: 114232208905223534}
   - component: {fileID: 114453939608911754}
   - component: {fileID: 114387018020655310}
   m_Layer: 0
@@ -129,7 +129,8 @@ GameObject:
   - component: {fileID: 114686414281075316}
   - component: {fileID: 114993071902959638}
   - component: {fileID: 114839561477569408}
-  - component: {fileID: 114192746408300524}
+  - component: {fileID: 114587794763356474}
+  - component: {fileID: 114636277433821044}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: Untagged
@@ -404,32 +405,20 @@ MonoBehaviour:
   right: {fileID: 1738153057664864}
   objects: []
   assignAllBeforeIdentified: 0
---- !u!114 &114192746408300524
+--- !u!114 &114223090703903644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1738153057664864}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24c7d7d77dd0d2a4b8e1ad129b170ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportOnClick: 1
-  teleportType: 1
---- !u!114 &114232208905223534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1721841833973670}
+  m_GameObject: {fileID: 1618593410709824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23d4115e9a40936478e9119b69ab204b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 0
-  team: 0
+  _head: {fileID: 4445029591342754}
+  _ears: {fileID: 4495164868907572}
+  wireframe: 0
 --- !u!114 &114268975159115922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -442,6 +431,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vrcam: {fileID: 0}
+--- !u!114 &114296402073924892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1618593410709824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad1e469d4e3e04489f9a36419f1a4f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114374627232159540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -481,6 +481,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 2
   team: 0
+  squads: []
+  selectedSquads: []
 --- !u!114 &114424933021146174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,6 +522,18 @@ MonoBehaviour:
     smooth: 0
     smoothTime: 5
     lockCursor: 1
+--- !u!114 &114587794763356474
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738153057664864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25d7b84589d76c498e8c37e0375a239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mPlayer: {fileID: 114387018020655310}
 --- !u!114 &114623841259707142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,6 +551,24 @@ MonoBehaviour:
   verbose: 0
   createComponents: 1
   updateDynamically: 1
+--- !u!114 &114636277433821044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738153057664864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7346a42905a29b347b1f492e8ad7b49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerIndex: 0
+  triggerPressed: 0
+  steamPressed: 0
+  menuPressed: 0
+  padPressed: 0
+  padTouched: 0
+  gripped: 0
 --- !u!114 &114686414281075316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -563,20 +595,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   origin: {fileID: 0}
---- !u!114 &114725586801477792
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1618593410709824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _head: {fileID: 4445029591342754}
-  _ears: {fileID: 4495164868907572}
-  wireframe: 0
 --- !u!114 &114839561477569408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -588,8 +606,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd9cbaed483f2c44cb247a247db54c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mPlayer: {fileID: 114232208905223534}
+  mPlayer: {fileID: 114387018020655310}
   triggerButtonDown: 0
+  menuButtonDown: 0
 --- !u!114 &114993071902959638
 MonoBehaviour:
   m_ObjectHideFlags: 1
