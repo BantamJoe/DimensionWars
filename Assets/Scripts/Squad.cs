@@ -4,28 +4,7 @@ using UnityEngine;
 
 public class Squad : MonoBehaviour
 {
-    public bool isSelected;
     public int team;
-
-    public void SetSelected(GameObject selection)
-    {
-        var squadUnits = transform.GetComponentsInChildren<Unit>();
-        foreach (var squadUnit in squadUnits)
-        {
-            squadUnit.SetSelected();
-        }
-
-    }
-
-    public void SetUnselected()
-    {
-        var squadUnits = transform.GetComponentsInChildren<Unit>();
-        foreach (var squadUnit in squadUnits)
-        {
-            squadUnit.SetUnselected();
-        }
-
-    }
 
     public void SetTarget(Unit target)
     {
@@ -45,16 +24,6 @@ public class Squad : MonoBehaviour
         foreach (var squadUnit in squadUnits)
         {
             squadUnit.SetImmediateMoveTarget(pos);
-        }
-    }
-
-    public void AddWaypoint(Vector3 pos)
-    {
-        var squadUnits = transform.GetComponentsInChildren<Unit>();
-
-        foreach (var squadUnit in squadUnits)
-        {
-            squadUnit.AddWaypoint(pos);
         }
     }
 

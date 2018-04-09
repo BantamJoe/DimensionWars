@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CanShootTarget : BehaviourNode
+public class IsGunCooledDown : BehaviourNode
 {
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {

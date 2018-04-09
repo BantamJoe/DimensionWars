@@ -90,7 +90,7 @@ public class SoldierBehaviourTree : MonoBehaviour
         sequence.children = new List<BehaviourNode>
         {
             bt.CreateNode<IsEnemyInSight>().Initialize(range),
-            bt.CreateNode<CanShootTarget>(),
+            bt.CreateNode<IsGunCooledDown>(),
             bt.CreateNode<ShootTarget>(),
         };
         return sequence;
@@ -102,7 +102,7 @@ public class SoldierBehaviourTree : MonoBehaviour
         sequence.children = new List<BehaviourNode>
         {
             bt.CreateNode<IsUnderAttack>(),
-            bt.CreateNode<FindCover>(),
+            bt.CreateNode<SetDestinationToCover>(),
             bt.CreateNode<MoveToTarget>(),
         };
         return sequence;
@@ -124,8 +124,8 @@ public class SoldierBehaviourTree : MonoBehaviour
         sequence.children = new List<BehaviourNode>
         {
             bt.CreateNode<IsEnemyInSight>(),
-            bt.CreateNode<ChargeTarget>(),
-            bt.CreateNode<CanShootTarget>(),
+            bt.CreateNode<SetDestinationToTarget>(),
+            bt.CreateNode<IsGunCooledDown>(),
             bt.CreateNode<ShootTarget>(),
         };
         return sequence;

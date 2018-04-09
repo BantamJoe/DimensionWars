@@ -42,10 +42,8 @@ public class IsEnemyInSight : BehaviourNode
                             yield break;
                         }
                     }
-
                 }
             }
-
         }
         yield return BehaviourStatus.Failed;
     }

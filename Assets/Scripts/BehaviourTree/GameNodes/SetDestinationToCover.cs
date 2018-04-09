@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FindCover : BehaviourNode
+public class SetDestinationToCover : BehaviourNode
 {
     float maxDistance = 20;
 
