@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveToTarget : BehaviourNode
+public class MoveToDestination : BehaviourNode
 {
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {
         var mover = context.unit.GetComponent<UnitMover>();
-        mover.agent.isStopped = false;
         if (mover.agent.destination == Vector3.zero)
         {
             yield break;

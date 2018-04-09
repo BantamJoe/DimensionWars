@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetDestinationToCover : BehaviourNode
 {
-    float maxDistance = 20;
+    float maxDistance = 30;
 
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {
