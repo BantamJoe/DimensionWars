@@ -19,5 +19,6 @@ abstract public class BehaviourNode : ScriptableObject, IEnumerable<BehaviourSta
     {
         public Unit unit;
         public Unit target;
+        public float waitFor;
     }
 }

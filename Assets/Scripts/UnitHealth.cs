@@ -4,63 +4,35 @@ using UnityEngine;
 
 public class UnitHealth : MonoBehaviour
 {
-    public int health;
-    private bool isDamaged;
-    private float timer = 2.0f;
+    public float health;
+    public bool isDead;
+    public Unit attacker;
+    public bool isUnderAttack;
 
-    // Use this for initialization
-    void Start()
+    public void TakeDamage(float damage, Unit attacker)
     {
-       
-    }
+        health -= damage;
+        health = Mathf.Max(health, 0);
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (health <= 0)
-            Destroy(gameObject);
+        StartCoroutine(SetUnderAttack());
+        this.attacker = attacker;
 
-        //health = PlayerPrefs.GetInt("Health");
-
-        if (isDamaged)
+        if (health == 0)
         {
-            timer -= Time.deltaTime;
-        }
-
-        if (timer <= 0)
-        {
-            TimeEnd();
+            isDead = true;
         }
     }
 
-    void takeDamage()
+    IEnumerator SetUnderAttack()
     {
-        if (!isDamaged)
+        if (isUnderAttack)
         {
-            health--;
+            yield break;
         }
-    }
 
-    void OnTriggerEnter(Collider col)
-    {
-        if (col.gameObject.tag ==  "Bullet")
-        {
-            takeDamage();
-            if (isDamaged)
-            {
-                Color color = gameObject.GetComponent<SpriteRenderer>().color;
-                color.a = 0.5f;
-                gameObject.GetComponent<SpriteRenderer>().color = color;
-            }
-        }
-    }
-
-    void TimeEnd()
-    {
-        Color color = gameObject.GetComponent<SpriteRenderer>().color;
-        color.a = 1.0f;
-        gameObject.GetComponent<SpriteRenderer>().color = color;
-        isDamaged = false;
-        timer = 2.0f;
+        isUnderAttack = true;
+        yield return new WaitForSeconds(1);
+        isUnderAttack = false;
+        attacker = null;
     }
 }

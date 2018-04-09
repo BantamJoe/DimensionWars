@@ -6,7 +6,8 @@ public class StopMovement : BehaviourNode
 {
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {
-        context.unit.mover.StopMovement();
+        var mover = context.unit.GetComponent<UnitMover>();
+        mover.agent.isStopped = true;
         yield break;
     }
 }

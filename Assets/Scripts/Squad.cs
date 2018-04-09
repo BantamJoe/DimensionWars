@@ -38,6 +38,16 @@ public class Squad : MonoBehaviour
 
     }
 
+    public void SetImmediateMoveTarget(Vector3 pos)
+    {
+        var squadUnits = transform.GetComponentsInChildren<Unit>();
+
+        foreach (var squadUnit in squadUnits)
+        {
+            squadUnit.SetImmediateMoveTarget(pos);
+        }
+    }
+
     public void AddWaypoint(Vector3 pos)
     {
         var squadUnits = transform.GetComponentsInChildren<Unit>();
@@ -46,5 +56,21 @@ public class Squad : MonoBehaviour
         {
             squadUnit.AddWaypoint(pos);
         }
+    }
+
+    public void SetCoverTarget(GameObject cover)
+    {
+        // TODO Use context sens. choice.
+        var side = cover.transform.Find("Front");
+        var i = 1;
+        var squadUnits = transform.GetComponentsInChildren<Unit>();
+        foreach (var unit in squadUnits)
+        {
+            var pointName = "CoverPos" + i;
+            var pointTarget = side.Find(pointName);
+            unit.SetImmediateMoveTarget(pointTarget.transform.position);
+            i++;
+        }
+        print("Moved to cover!");
     }
 }
