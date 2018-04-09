@@ -6,6 +6,11 @@ public class Squad : MonoBehaviour
 {
     public int team;
 
+    public Unit[] Units()
+    {
+        return transform.GetComponentsInChildren<Unit>();
+    }
+
     public void SetTarget(Unit target)
     {
         var squadUnits = transform.GetComponentsInChildren<Unit>();

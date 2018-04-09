@@ -12,7 +12,7 @@ public class Unit : MonoBehaviour
     public Squad squad;
     public UnitWeapon weapon;
 
-    public enum Class { Rifleman, HeavyAssault, Sniper, MG }
+    public enum Class { Rifleman, HeavyAssault, Sniper, MG, Commander }
     public Class unitClass = Class.Rifleman;
 
     void Awake()
