@@ -10,12 +10,14 @@ public class UnitAnimationController : MonoBehaviour
 {
     Animator anim;
     NavMeshAgent ag;
+	Unit unit;
     UnitHealth h;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         ag = GetComponent<NavMeshAgent>();
+		unit = GetComponent<Unit> ();
         h = GetComponent<UnitHealth>();
     }
 
@@ -51,7 +53,16 @@ public class UnitAnimationController : MonoBehaviour
             yield break;
         }
         anim.SetBool("isFiring", true);
+
+		unit.muzzleEffect.SetActive(true);
+		unit.tracerEffect.SetActive (true);
+
         yield return new WaitForSeconds(1);
+
         anim.SetBool("isFiring", false);
+
+		//Turn off particle effect
+		unit.muzzleEffect.SetActive(false);
+		unit.tracerEffect.SetActive (false);
     }
 }

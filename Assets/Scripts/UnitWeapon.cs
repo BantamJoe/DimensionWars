@@ -9,7 +9,6 @@ public class UnitWeapon : MonoBehaviour
 
     public void Shoot(GameObject target)
     {
-
         var t = target.transform.Find("RaycastTarget");
         if (t != null)
         {

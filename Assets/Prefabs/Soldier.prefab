@@ -2728,6 +2728,12 @@ MonoBehaviour:
   gunCooldown: 0
   squad: {fileID: 0}
   weapon: {fileID: 0}
+  muzzleEffect_prefab: {fileID: 1284857445568250, guid: 83f4ee4b28de67947bc48d77bb7da2b1,
+    type: 2}
+  tracerEffect_prefab: {fileID: 1082812163697970, guid: 6f36cf2f03a55c745adbeeb834e5b956,
+    type: 2}
+  muzzleEffect: {fileID: 0}
+  tracerEffect: {fileID: 0}
   unitClass: 0
   imgClass1: {fileID: 114812906691606982}
   imgClass2: {fileID: 114455111176057864}
