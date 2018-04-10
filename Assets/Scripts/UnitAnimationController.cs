@@ -5,29 +5,40 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(UnitHealth))]
 public class UnitAnimationController : MonoBehaviour
 {
     Animator anim;
     NavMeshAgent ag;
 	Unit unit;
+    UnitHealth h;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         ag = GetComponent<NavMeshAgent>();
 		unit = GetComponent<Unit> ();
+        h = GetComponent<UnitHealth>();
     }
 
     private void Update()
     {
-        if (ag.velocity != Vector3.zero)
+        if (h.isDead)
         {
-            anim.SetBool("isRunning", true);
+            anim.SetBool("isDead", true);
         }
         else
         {
-            anim.SetBool("isRunning", false);
+            if (ag.velocity != Vector3.zero)
+            {
+                anim.SetBool("isRunning", true);
+            }
+            else
+            {
+                anim.SetBool("isRunning", false);
+            }
         }
+
     }
 
     public void Shoot()

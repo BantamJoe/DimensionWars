@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class Retreat : BehaviourNode
 {
+    bool hasRetreated;
+
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {
-        var attackDirection = context.target.transform.position - context.unit.transform.position;
-        attackDirection.Normalize();
+        if (hasRetreated)
+        {
+            yield break;
+        }
 
-        var moveTarget = attackDirection * 10.0f;
+        var health = context.unit.GetComponent<UnitHealth>();
+        var retreatDirection = context.unit.transform.position - health.attacker.transform.position;
+        retreatDirection.Normalize();
+        retreatDirection *= 50f;
 
-        context.unit.mover.SetTarget(moveTarget);
-        context.unit.mover.agent.isStopped = false;
+        Debug.DrawLine(context.unit.transform.position, health.attacker.transform.position, Color.blue, 100, false);
+
+        var retreatTarget = context.unit.transform.position + retreatDirection;
+
+        Debug.DrawLine(context.unit.transform.position, retreatTarget, Color.magenta, 100, false);
+
+        context.unit.mover.SetTarget(retreatTarget);
+        hasRetreated = true;
         yield break;
     }
 }
