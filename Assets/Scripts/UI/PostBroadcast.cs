@@ -15,7 +15,7 @@ public class PostBroadcast : MonoBehaviour
     
     IEnumerator ClearText()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         var textComponent = GameObject.Find("AnnounceText").GetComponent<UnityEngine.UI.Text>();
         textComponent.text = "";
         yield return null;

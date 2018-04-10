@@ -18,11 +18,11 @@ public class Retreat : BehaviourNode
         retreatDirection.Normalize();
         retreatDirection *= 50f;
 
-        Debug.DrawLine(context.unit.transform.position, health.attacker.transform.position, Color.blue, 100, false);
+        //Debug.DrawLine(context.unit.transform.position, health.attacker.transform.position, Color.blue, 100, false);
 
         var retreatTarget = context.unit.transform.position + retreatDirection;
 
-        Debug.DrawLine(context.unit.transform.position, retreatTarget, Color.magenta, 100, false);
+        //Debug.DrawLine(context.unit.transform.position, retreatTarget, Color.magenta, 100, false);
 
         context.unit.mover.SetTarget(retreatTarget);
         hasRetreated = true;

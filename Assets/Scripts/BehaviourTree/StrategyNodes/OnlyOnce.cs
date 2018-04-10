@@ -12,6 +12,7 @@ public class OnlyOnce : BehaviourNode
         {
             yield return BehaviourStatus.Failed;
         }
+        Debug.Log("FIRED");
         fired = true;
     }
 }

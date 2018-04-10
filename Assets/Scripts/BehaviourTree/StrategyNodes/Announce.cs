@@ -14,6 +14,7 @@ public class Announce : BehaviourNode
 
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {
+        //Debug.DrawLine(context.unit.transform.position, context.target.transform.position, Color.magenta, 100, false);
         var textComponent = GameObject.Find("AnnounceText").GetComponent<PostBroadcast>();
         textComponent.Say(text);
         yield break;
