@@ -5,23 +5,11 @@ using UnityEngine.UI;
 
 public class AssignIcon : MonoBehaviour {
 
-    public enum Class { Rifleman, HeavyAssault, Sniper, MG }
-    public Class unitClass;
+    //public enum Class { Rifleman, HeavyAssault, Sniper, MG, Commander }
+    //public Class unitClass;
+
+    Unit.Class unitType;
    
-    //public Image imgMedic1;
-    //public Image imgMedic2;
-
-    //public Sprite medic1;
-    //public Sprite medic2;
-
-    //public Image imgSniper1;
-    //public Image imgSniper2;
-    //public Image imgSniper3;
-
-    //public Sprite sniper1;
-    //public Sprite sniper2;
-    //public Sprite sniper3;
-
     public Image imgClass1;
     public Image imgClass2;
     public Image imgClass3;
@@ -37,50 +25,37 @@ public class AssignIcon : MonoBehaviour {
         ChangeImg();
     }
 
-    void ChangeImg()
+    public void ChangeImg()
     {
-        if(unitClass == Class.MG)
-        {
-            //imgMedic1.enabled = true;
-            //imgMedic2.enabled = true;
-
-            //imgMedic1.rectTransform.sizeDelta = new Vector2(50, 100);
-            //imgMedic2.rectTransform.sizeDelta = new Vector2(100, 50);
-
-            //imgMedic1.overrideSprite = medic1;
-            //imgMedic2.overrideSprite = medic2;
-
+        if(unitType == Unit.Class.MG)
+        {           
             imgClass1.enabled = true;
             imgClass2.enabled = true;
 
-            imgClass1.rectTransform.sizeDelta = new Vector2(50, 100);
-            imgClass2.rectTransform.sizeDelta = new Vector2(100, 50);
+            //if(Enemy)
+            //{imgClass1.color = Color.red;
+            //imgClass2.color = Color.red;}
+
+            imgClass1.rectTransform.sizeDelta = new Vector2(200, 500);
+            imgClass2.rectTransform.sizeDelta = new Vector2(500, 200);
 
             imgClass1.overrideSprite = class1;
             imgClass2.overrideSprite = class2;
         }
 
-        if(unitClass == Class.Sniper)
-        {
-            //imgSniper1.enabled = true;
-            //imgSniper2.enabled = true;
-            //imgSniper3.enabled = true;
-
-            //imgSniper1.rectTransform.sizeDelta = new Vector2(100, 100);
-            //imgSniper2.rectTransform.sizeDelta = new Vector2(70, 70);
-            //imgSniper3.rectTransform.sizeDelta = new Vector2(40, 40);
-
-            //imgSniper1.overrideSprite = sniper1;
-            //imgSniper2.overrideSprite = sniper2;
-            //imgSniper3.overrideSprite = sniper3;
-
+        if(unitType == Unit.Class.Sniper)
+        {         
             imgClass1.enabled = true;
             imgClass2.enabled = true;
             imgClass3.enabled = true;
 
-            imgClass1.rectTransform.sizeDelta = new Vector2(100, 100);
-            imgClass2.rectTransform.sizeDelta = new Vector2(70, 70);
-            imgClass3.rectTransform.sizeDelta = new Vector2(40, 40);
+            //if(gameObject.name == "Soldier")
+            //{imgClass1.color = Color.red;
+            //imgClass2.color = Color.red;}
+
+            imgClass1.rectTransform.sizeDelta = new Vector2(500, 500);
+            imgClass2.rectTransform.sizeDelta = new Vector2(350, 350);
+            imgClass3.rectTransform.sizeDelta = new Vector2(250, 250);
 
             imgClass1.overrideSprite = class1;
             imgClass2.overrideSprite = class2;
@@ -88,13 +63,19 @@ public class AssignIcon : MonoBehaviour {
 
         }
 
-        if (unitClass == Class.Rifleman)
+        if (unitType == Unit.Class.Rifleman)
         {
             imgClass1.enabled = true;
             imgClass2.enabled = true;
 
-            imgClass1.rectTransform.sizeDelta = new Vector2(30, 100);
-            imgClass2.rectTransform.sizeDelta = new Vector2(30, 100);
+            //if (gameObject.name == "Soldier")
+            //{
+            //    imgClass1.color = Color.red;
+            //    imgClass2.color = Color.red;
+            //}
+
+            imgClass1.rectTransform.sizeDelta = new Vector2(100, 500);
+            imgClass2.rectTransform.sizeDelta = new Vector2(100, 500);
 
             imgClass1.rectTransform.rotation = Quaternion.Euler(0,0,45);
             imgClass2.rectTransform.rotation = Quaternion.Euler(0,0,-45);          
@@ -103,22 +84,55 @@ public class AssignIcon : MonoBehaviour {
             imgClass2.overrideSprite = class2;          
         }
 
-        if (unitClass == Class.HeavyAssault)
+        if (unitType == Unit.Class.HeavyAssault)
         {
             imgClass1.enabled = true;
             imgClass2.enabled = true;
             imgClass3.enabled = true;
             imgClass4.enabled = true;
 
-            imgClass1.rectTransform.sizeDelta = new Vector2(20, 100);
-            imgClass2.rectTransform.sizeDelta = new Vector2(20, 100);
-            imgClass3.rectTransform.sizeDelta = new Vector2(20, 100);
-            imgClass4.rectTransform.sizeDelta = new Vector2(20, 100);
+            //if(Enemy)
+            //{imgClass1.color = Color.red;
+            //imgClass2.color = Color.red;}
 
-            imgClass1.rectTransform.localPosition = new Vector3(30, 0, 0);
-            imgClass2.rectTransform.localPosition = new Vector3(-30, 0, 0);
-            imgClass3.rectTransform.localPosition = new Vector3(10, 0, 0);
-            imgClass4.rectTransform.localPosition = new Vector3(-10, 0, 0);
+            imgClass1.rectTransform.sizeDelta = new Vector2(150, 500);
+            imgClass2.rectTransform.sizeDelta = new Vector2(150, 500);
+            imgClass3.rectTransform.sizeDelta = new Vector2(150, 500);
+            imgClass4.rectTransform.sizeDelta = new Vector2(150, 500);
+
+            imgClass1.rectTransform.localPosition = new Vector3(75, 0, 0);
+            imgClass2.rectTransform.localPosition = new Vector3(-375, 0, 0);
+            imgClass3.rectTransform.localPosition = new Vector3(-75, 0, 0);
+            imgClass4.rectTransform.localPosition = new Vector3(-225, 0, 0);
+
+            imgClass1.overrideSprite = class1;
+            imgClass2.overrideSprite = class2;
+            imgClass3.overrideSprite = class3;
+            imgClass4.overrideSprite = class4;
+        }
+
+        if (unitType == Unit.Class.Commander)
+        {
+            imgClass1.enabled = true;
+            imgClass2.enabled = true;
+            imgClass3.enabled = true;
+            imgClass4.enabled = true;
+
+            //if (gameObject.name == "Soldier")
+            //{
+            //    imgClass1.color = Color.red;
+            //    imgClass2.color = Color.red;
+            //}
+
+            imgClass1.rectTransform.sizeDelta = new Vector2(200, 200);
+            imgClass2.rectTransform.sizeDelta = new Vector2(200, 200);
+            imgClass3.rectTransform.sizeDelta = new Vector2(200, 200);
+            imgClass4.rectTransform.sizeDelta = new Vector2(200, 200);
+
+            imgClass1.rectTransform.localPosition = new Vector3(150, 150, 0);
+            imgClass2.rectTransform.localPosition = new Vector3(-150, -150, 0);
+            imgClass3.rectTransform.localPosition = new Vector3(-150, 150, 0);
+            imgClass4.rectTransform.localPosition = new Vector3(150, -150, 0);
 
             imgClass1.overrideSprite = class1;
             imgClass2.overrideSprite = class2;
