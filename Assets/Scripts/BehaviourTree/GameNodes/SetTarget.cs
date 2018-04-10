@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetTarget : BehaviourNode
 {
-    public float targetingDistance;
+    public float targetingDistance = 75;
 
     public SetTarget Initialize(float targetingDistance)
     {
