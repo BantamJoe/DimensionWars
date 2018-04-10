@@ -77,6 +77,13 @@ public class Unit : MonoBehaviour
 
 				break;
 			}
+		case Class.Commander:
+			{
+				tracerEffect.GetComponent<ParticleSystem> ().startColor = Color.yellow;
+				muzzleEffect.GetComponent<ParticleSystem>().startColor = Color.yellow;
+
+				break;
+			}
 		}
     }
 
