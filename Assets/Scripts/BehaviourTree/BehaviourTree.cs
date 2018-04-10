@@ -15,16 +15,31 @@ public class BehaviourTree : MonoBehaviour
 
     IEnumerator Execute()
     {
+        var health = context.unit.GetComponent<UnitHealth>();
         while (true)
         {
+            // Handle death
+            if (health.isDead)
+            {
+                yield break;
+            }
+
             yield return StartCoroutine(ExecuteRoot());
         }
     }
 
     IEnumerator ExecuteRoot()
     {
+        var health = context.unit.GetComponent<UnitHealth>();
         foreach (var status in root)
         {
+            // Handle death
+            if (health.isDead)
+            {
+                yield break;
+            }
+
+            // Do actions
             if (status == BehaviourStatus.Running && context.waitFor != 0)
             {
                 var waitFor = context.waitFor;

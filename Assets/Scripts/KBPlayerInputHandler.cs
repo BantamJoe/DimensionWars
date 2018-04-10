@@ -64,5 +64,13 @@ public class KBPlayerInputHandler : MonoBehaviour
         {
             player.SelectSquad(2);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            player.SelectSquad(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            player.SelectSquad(4);
+        }
     }
 }
