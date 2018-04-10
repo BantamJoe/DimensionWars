@@ -32,6 +32,7 @@ public class StrategicAIReinforceBehaviourTree : MonoBehaviour
         {
             bt.CreateNode<OnlyOnce>(),
             bt.CreateNode<SetTarget>(),
+            bt.CreateNode<Announce>().Initialize("Commander 1: Enemy units spotted! Calling for backup from Sector 2!"),
             bt.CreateNode<SetSquadDestination>().Initialize(reinforcementGroup, reinforcementTarget),
         };
         return root;

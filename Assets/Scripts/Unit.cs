@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(UnitMover))]
 [RequireComponent(typeof(UnitWeapon))]
+[RequireComponent(typeof(UnitHealth))]
 public class Unit : MonoBehaviour
 {
     public UnitMover mover;
