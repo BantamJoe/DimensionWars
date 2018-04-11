@@ -50,13 +50,15 @@ public class Squad : MonoBehaviour
 
     public bool IsDead()
     {
+        var unitCount = Units().Length;
+        var deadCount = 0;
         foreach (var unit in Units())
         {
             if (unit.GetComponent<UnitHealth>().isDead)
             {
-                return true;
+                deadCount++;
             }
         }
-        return false;
+        return deadCount == unitCount;
     }
 }
