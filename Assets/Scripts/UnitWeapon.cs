@@ -20,7 +20,7 @@ public class UnitWeapon : MonoBehaviour
         var health = target.GetComponent<UnitHealth>();
         if (health != null)
         {
-            health.TakeDamage(1, unit);
+            health.TakeDamage(10, unit);
         }
     }
 }

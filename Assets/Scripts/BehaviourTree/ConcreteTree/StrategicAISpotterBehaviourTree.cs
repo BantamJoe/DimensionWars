@@ -4,13 +4,22 @@ using UnityEngine;
 
 [RequireComponent(typeof(BehaviourTree))]
 [RequireComponent(typeof(Unit))]
-public class StrategicAIReinforceBehaviourTree : MonoBehaviour
+public class StrategicAISpotterBehaviourTree : MonoBehaviour
 {
     [SerializeField]
     private BehaviourTree bt;
     public Unit unit;
-    public Squad reinforcementGroup;
-    public GameObject reinforcementTarget;
+
+    public Squad watch1;
+    public Squad watch2;
+    public Squad reinf1;
+    public Squad reinf2;
+    public Squad reinf3;
+    public Squad comm;
+    public GameObject r1;
+    public GameObject r2;
+    public GameObject r3;
+    public GameObject r4;
 
     void Awake()
     {
@@ -30,25 +39,42 @@ public class StrategicAIReinforceBehaviourTree : MonoBehaviour
         var root = bt.CreateNode<SelectorNode>();
         root.children = new List<BehaviourNode>
         {
-            ReinforceBehaviour(),
+            ChargeSequence(),
+            RetreatSequence(),
             RiflemanBehaviour(),
         };
         return root;
     }
 
-    BehaviourNode ReinforceBehaviour()
+    BehaviourNode ChargeSequence()
     {
         var root = bt.CreateNode<SequenceNode>();
         root.children = new List<BehaviourNode>
         {
             bt.CreateNode<SetTarget>(),
             bt.CreateNode<OnlyOnce>(),
-            bt.CreateNode<Announce>().Initialize("Commander 1: Enemy units spotted! Calling for backup from Sector 2!"),
-            bt.CreateNode<SetSquadDestination>().Initialize(reinforcementGroup, reinforcementTarget),
+            bt.CreateNode<Announce>().Initialize("Commander 2: There he is! Charge!"),
         };
         return root;
     }
 
+    BehaviourNode RetreatSequence()
+    {
+        var root = bt.CreateNode<SequenceNode>();
+        root.children = new List<BehaviourNode>
+        {
+            bt.CreateNode<IsSquadDead>().Initialize(watch1),
+            bt.CreateNode<IsSquadDead>().Initialize(watch2),
+            bt.CreateNode<OnlyOnce>(),
+            bt.CreateNode<Announce>().Initialize("Commander 2: We lost our front line! Retreat!"),
+            bt.CreateNode<SetSquadDestination>().Initialize(reinf1, r1),
+                        bt.CreateNode<SetSquadDestination>().Initialize(reinf2, r2),
+                                    bt.CreateNode<SetSquadDestination>().Initialize(reinf3, r3),
+                                                bt.CreateNode<SetSquadDestination>().Initialize(comm, r4),
+
+        };
+        return root;
+    }
 
 
     BehaviourNode RiflemanBehaviour()

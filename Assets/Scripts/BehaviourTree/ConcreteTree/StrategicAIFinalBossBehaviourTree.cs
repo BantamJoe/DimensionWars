@@ -4,13 +4,18 @@ using UnityEngine;
 
 [RequireComponent(typeof(BehaviourTree))]
 [RequireComponent(typeof(Unit))]
-public class StrategicAIReinforceBehaviourTree : MonoBehaviour
+public class StrategicAIFinalBossBehaviourTree : MonoBehaviour
 {
     [SerializeField]
     private BehaviourTree bt;
     public Unit unit;
     public Squad reinforcementGroup;
     public GameObject reinforcementTarget;
+    public Squad pincerGroup;
+    public GameObject pincerTarget;
+    public Squad remainderGroup;
+    public GameObject remainderTarget;
+    public Squad commandSquad;
 
     void Awake()
     {
@@ -30,6 +35,7 @@ public class StrategicAIReinforceBehaviourTree : MonoBehaviour
         var root = bt.CreateNode<SelectorNode>();
         root.children = new List<BehaviourNode>
         {
+            RetreatBehaviour(),
             ReinforceBehaviour(),
             RiflemanBehaviour(),
         };
@@ -43,8 +49,27 @@ public class StrategicAIReinforceBehaviourTree : MonoBehaviour
         {
             bt.CreateNode<SetTarget>(),
             bt.CreateNode<OnlyOnce>(),
-            bt.CreateNode<Announce>().Initialize("Commander 1: Enemy units spotted! Calling for backup from Sector 2!"),
+            bt.CreateNode<Announce>().Initialize("Commander 3: There they are! Hold the line!"),
             bt.CreateNode<SetSquadDestination>().Initialize(reinforcementGroup, reinforcementTarget),
+            bt.CreateNode<WaitForSquadToArrive>().Initialize(reinforcementGroup, reinforcementTarget, 50),
+            bt.CreateNode<Announce>().Initialize("Commander 3: They're pinned! Attack now!"),
+            bt.CreateNode<SetSquadDestination>().Initialize(pincerGroup, pincerTarget),
+        };
+        return root;
+    }
+
+    BehaviourNode RetreatBehaviour()
+    {
+        var root = bt.CreateNode<SequenceNode>();
+        root.children = new List<BehaviourNode>
+        {
+        bt.CreateNode<IsSquadDead>().Initialize(pincerGroup),
+        bt.CreateNode<OnlyOnce>(),
+                    bt.CreateNode<Announce>().Initialize("Commander 3: We've lost too many forces! Retreat!"),
+                    bt.CreateNode<SetSquadDestination>().Initialize(commandSquad, remainderTarget),
+                                bt.CreateNode<SetSquadDestination>().Initialize(remainderGroup, remainderTarget),
+                                bt.CreateNode<SetSquadDestination>().Initialize(reinforcementGroup, reinforcementTarget),
+
         };
         return root;
     }
