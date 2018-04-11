@@ -466,7 +466,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994395563890314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23d4115e9a40936478e9119b69ab204b, type: 3}
   m_Name: 
@@ -533,8 +533,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d32a19e64cffb48948726136ea85d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  player: {fileID: 0}
+  cam: {fileID: 20115065227846562}
+  player: {fileID: 114798394841151722}
   mouseLook:
     XSensitivity: 0.7
     YSensitivity: 0.7
@@ -763,7 +763,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994395563890314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23d4115e9a40936478e9119b69ab204b, type: 3}
   m_Name: 
@@ -828,13 +828,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994395563890314}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d32a19e64cffb48948726136ea85d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  player: {fileID: 0}
+  cam: {fileID: 20115065227846562}
+  player: {fileID: 114798394841151722}
   mouseLook:
     XSensitivity: 2
     YSensitivity: 2
