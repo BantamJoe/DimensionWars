@@ -47,4 +47,16 @@ public class Squad : MonoBehaviour
         }
         print("Moved to cover!");
     }
+
+    public bool IsDead()
+    {
+        foreach (var unit in Units())
+        {
+            if (unit.GetComponent<UnitHealth>().isDead)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
