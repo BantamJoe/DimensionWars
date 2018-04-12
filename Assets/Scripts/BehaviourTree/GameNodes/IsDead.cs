@@ -7,12 +7,9 @@ public class IsDead : BehaviourNode
     public override IEnumerator<BehaviourStatus> GetEnumerator()
     {
         var health = context.unit.GetComponent<UnitHealth>();
-        if (health != null)
+        if (health.isDead)
         {
-            if (health.isDead)
-            {
-                yield break;
-            }
+            yield break;
         }
         yield return BehaviourStatus.Failed;
     }
