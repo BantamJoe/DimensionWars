@@ -19,6 +19,7 @@ public class UnitHealth : MonoBehaviour
 
         if (health == 0)
         {
+            GetComponent<Collider>().enabled = false;
             isDead = true;
         }
     }

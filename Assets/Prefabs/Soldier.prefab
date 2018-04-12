@@ -2743,6 +2743,7 @@ MonoBehaviour:
   class2: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   class3: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   class4: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  cover: {fileID: 0}
 --- !u!114 &114920257270272724
 MonoBehaviour:
   m_ObjectHideFlags: 1

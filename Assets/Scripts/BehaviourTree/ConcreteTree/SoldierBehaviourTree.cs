@@ -87,6 +87,7 @@ public class SoldierBehaviourTree : MonoBehaviour
         var sequence = bt.CreateNode<SequenceNode>();
         sequence.children = new List<BehaviourNode>
         {
+            bt.CreateNode<IsNotInCover>(),
             bt.CreateNode<IsUnderAttack>(),
             bt.CreateNode<SetDestinationToCover>(),
             bt.CreateNode<MoveToDestination>(),

@@ -33,6 +33,8 @@ public class Unit : MonoBehaviour
     public Sprite class3;
     public Sprite class4;
 
+    public Cover cover;
+
     void Awake()
     {
         mover = GetComponent<UnitMover>();
