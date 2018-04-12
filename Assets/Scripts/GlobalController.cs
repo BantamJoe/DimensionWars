@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalController : MonoBehaviour {
+public class GlobalController : MonoBehaviour
+{
     public Squad c1;
     public Squad c2;
     public Squad c3;
 
     public bool c2Active;
     public bool c3Active;
+    public bool c4Active;
 
+    public GameObject c1Root;
     public GameObject c2Root;
     public GameObject c3Root;
+    public GameObject c4Root;
 
     private void Update()
     {
@@ -25,6 +29,14 @@ public class GlobalController : MonoBehaviour {
         {
             c3Active = true;
             c3Root.SetActive(true);
+            c1Root.SetActive(false);
+        }
+
+        if (c3.IsDead() && !c4Active)
+        {
+            c4Active = true;
+            c4Root.SetActive(true);
+            c2Root.SetActive(false);
         }
     }
 }

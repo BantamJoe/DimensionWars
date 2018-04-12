@@ -27,10 +27,10 @@ public class SoldierBehaviourTree : MonoBehaviour
         {
             bt.root = SniperBehaviour();
         }
-        else if (unit.unitClass == Unit.Class.MG)
-        {
+        //else if (unit.unitClass == Unit.Class.MG)
+        //{
 
-        }
+        //}
         else
         {
             bt.root = RiflemanBehaviour();
@@ -87,6 +87,7 @@ public class SoldierBehaviourTree : MonoBehaviour
         var sequence = bt.CreateNode<SequenceNode>();
         sequence.children = new List<BehaviourNode>
         {
+            bt.CreateNode<IsNotInCover>(),
             bt.CreateNode<IsUnderAttack>(),
             bt.CreateNode<SetDestinationToCover>(),
             bt.CreateNode<MoveToDestination>(),

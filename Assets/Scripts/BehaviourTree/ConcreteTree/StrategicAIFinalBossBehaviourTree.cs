@@ -21,12 +21,10 @@ public class StrategicAIFinalBossBehaviourTree : MonoBehaviour
     {
         unit = GetComponent<Unit>();
         bt = GetComponent<BehaviourTree>();
-
         bt.context = new BehaviourNode.Context
         {
             unit = unit
         };
-
         bt.root = StrategicBehaviour();
     }
 
@@ -35,7 +33,6 @@ public class StrategicAIFinalBossBehaviourTree : MonoBehaviour
         var root = bt.CreateNode<SelectorNode>();
         root.children = new List<BehaviourNode>
         {
-            RetreatBehaviour(),
             ReinforceBehaviour(),
             RiflemanBehaviour(),
         };
@@ -73,8 +70,6 @@ public class StrategicAIFinalBossBehaviourTree : MonoBehaviour
         };
         return root;
     }
-
-
 
     BehaviourNode RiflemanBehaviour()
     {
@@ -121,5 +116,4 @@ public class StrategicAIFinalBossBehaviourTree : MonoBehaviour
         };
         return sequence;
     }
-
 }

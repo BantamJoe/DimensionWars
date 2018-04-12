@@ -11,7 +11,7 @@ public class StrategicAISpotterBehaviourTree : MonoBehaviour
     public Unit unit;
 
     public Squad watch1;
-    public Squad watch2;
+    //public Squad watch2;
     public Squad reinf1;
     public Squad reinf2;
     public Squad reinf3;
@@ -64,7 +64,7 @@ public class StrategicAISpotterBehaviourTree : MonoBehaviour
         root.children = new List<BehaviourNode>
         {
             bt.CreateNode<IsSquadDead>().Initialize(watch1),
-            bt.CreateNode<IsSquadDead>().Initialize(watch2),
+            //bt.CreateNode<IsSquadDead>().Initialize(watch2),
             bt.CreateNode<OnlyOnce>(),
             bt.CreateNode<Announce>().Initialize("Commander 2: We lost our front line! Retreat!"),
             bt.CreateNode<SetSquadDestination>().Initialize(reinf1, r1),

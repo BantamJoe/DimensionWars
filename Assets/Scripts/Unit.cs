@@ -33,6 +33,8 @@ public class Unit : MonoBehaviour
     public Sprite class3;
     public Sprite class4;
 
+    public Cover cover;
+
     void Awake()
     {
         mover = GetComponent<UnitMover>();
@@ -103,7 +105,12 @@ public class Unit : MonoBehaviour
 
     void Start()
     {
-        
+        ChangeImg();
+
+        if (unitClass == Class.HeavyAssault)
+        {
+            GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 20f;
+        }
     }
 
     void Update()

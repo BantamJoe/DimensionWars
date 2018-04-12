@@ -10,24 +10,30 @@ public class SetDestinationToCover : BehaviourNode
     {
         var coverSelectionBoxes = GameObject.FindGameObjectsWithTag("CoverPoint");
         var closest = 100f;
-        GameObject target = null;
+        Cover target = null;
         foreach (var cover in coverSelectionBoxes)
         {
+            var controller = cover.transform.parent.GetComponent<Cover>();
+            var spot = controller.CheckIn(context.unit, context.target, false);
+            if (!spot.HasValue)
+            {
+                continue;
+            }
+
             //Debug.DrawLine(context.unit.transform.position, cover.transform.position, Color.magenta, 100, false);
-            var d = Vector3.Distance(context.unit.transform.position, cover.transform.position);
+            var d = Vector3.Distance(context.unit.transform.position, spot.Value);
             if (d < maxDistance && d < closest)
             {
                 closest = d;
-                target = cover;
+                target = controller;
             }
         }
 
         if (target != null)
         {
-            var root = target.transform.parent;
-            var side = root.transform.Find("Front");
-            var node = side.transform.Find("CoverPos2");
-            context.unit.mover.SetTarget(node.transform.position);
+            var p = target.CheckIn(context.unit, context.target, true);
+            context.unit.mover.SetTarget(p.Value);
+            context.unit.cover = target;
             //Debug.DrawLine(context.unit.transform.position, node.transform.position, Color.white, 100, false);
         }
         else

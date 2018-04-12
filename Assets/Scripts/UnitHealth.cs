@@ -11,6 +11,11 @@ public class UnitHealth : MonoBehaviour
 
     public void TakeDamage(float damage, Unit attacker)
     {
+        if (GetComponent<Unit>().cover != null)
+        {
+            damage *= 0.8f;
+        }
+
         health -= damage;
         health = Mathf.Max(health, 0);
 
@@ -19,6 +24,7 @@ public class UnitHealth : MonoBehaviour
 
         if (health == 0)
         {
+            GetComponent<Collider>().enabled = false;
             isDead = true;
         }
     }

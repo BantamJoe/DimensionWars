@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 114439325277639392}
   - component: {fileID: 114764843282075190}
   - component: {fileID: 114721212202698880}
+  - component: {fileID: 54236849366744802}
   m_Layer: 0
   m_Name: Soldier
   m_TagString: Untagged
@@ -2461,6 +2462,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1472506735602424}
   m_Mesh: {fileID: 4300000, guid: c21fd8055cc8cdc4da37c1254275f767, type: 3}
+--- !u!54 &54236849366744802
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361545085550920}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 4
+  m_CollisionDetection: 0
 --- !u!95 &95598154781346652
 Animator:
   serializedVersion: 3
@@ -2790,7 +2806,7 @@ MonoBehaviour:
     type: 2}
   muzzleEffect: {fileID: 0}
   tracerEffect: {fileID: 0}
-  unitClass: 2
+  unitClass: 0
   imgClass1: {fileID: 114812906691606982}
   imgClass2: {fileID: 114455111176057864}
   imgClass3: {fileID: 114355738188905926}
@@ -2799,6 +2815,7 @@ MonoBehaviour:
   class2: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   class3: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   class4: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  cover: {fileID: 0}
 --- !u!114 &114920257270272724
 MonoBehaviour:
   m_ObjectHideFlags: 1
