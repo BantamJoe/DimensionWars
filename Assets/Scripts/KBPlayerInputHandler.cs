@@ -26,7 +26,7 @@ public class KBPlayerInputHandler : MonoBehaviour
     {
         if (!cam)
         {
-            cam = GetComponentInChildren<Camera>();
+            cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         }
         player = GetComponent<Player>();
     }
