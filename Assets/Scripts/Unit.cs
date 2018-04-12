@@ -104,6 +104,11 @@ public class Unit : MonoBehaviour
     void Start()
     {
         ChangeImg();
+
+        if (unitClass == Class.HeavyAssault)
+        {
+            GetComponent<UnityEngine.AI.NavMeshAgent>().stoppingDistance = 20f;
+        }
     }
 
     void Update()

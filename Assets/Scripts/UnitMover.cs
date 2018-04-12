@@ -29,16 +29,31 @@ public class UnitMover : MonoBehaviour
 
     public void SetTarget(Vector3 pos)
     {
+        var rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
         agent.SetDestination(pos);
     }
 
     public void StopMovement()
     {
+        var rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
         agent.isStopped = true;
     }
 
     public void ResumeMovement()
     {
+        var rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
         agent.isStopped = false;
     }
 
