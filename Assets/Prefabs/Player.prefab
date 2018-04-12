@@ -234,8 +234,8 @@ Transform:
   m_LocalPosition: {x: 6.5829773, y: 2, z: -2.581314}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4637442440898640}
   - {fileID: 4995847668329348}
+  - {fileID: 4637442440898640}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 93.714005, z: 0}
@@ -322,7 +322,7 @@ Transform:
   - {fileID: 4038540753153670}
   - {fileID: 4467496170019084}
   m_Father: {fileID: 4011740437157244}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4735526690133688
 Transform:
@@ -362,7 +362,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4011740437157244}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20415072927251144
 Camera:
@@ -760,8 +760,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5d32a19e64cffb48948726136ea85d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  player: {fileID: 0}
+  cam: {fileID: 20415072927251144}
+  player: {fileID: 114459349337219458}
   mouseLook:
     XSensitivity: 0.7
     YSensitivity: 0.7

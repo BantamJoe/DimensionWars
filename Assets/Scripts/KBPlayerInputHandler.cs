@@ -17,7 +17,6 @@ public class KBPlayerInputHandler : MonoBehaviour
     #region VARIABLES
     [Tooltip("Main Non-VR Game Camera")]
     public Camera cam;
-
     public Player player;
 
     [SerializeField] private MouseLook mouseLook;
@@ -25,7 +24,10 @@ public class KBPlayerInputHandler : MonoBehaviour
 
     private void Awake()
     {
-        cam = GetComponentInChildren<Camera>();
+        if (!cam)
+        {
+            cam = GetComponentInChildren<Camera>();
+        }
         player = GetComponent<Player>();
     }
 
