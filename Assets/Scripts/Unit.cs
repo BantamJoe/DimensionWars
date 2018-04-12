@@ -97,11 +97,13 @@ public class Unit : MonoBehaviour
 				break;
 			}
 		}
+
+        ChangeImg();
     }
 
     void Start()
     {
-        ChangeImg();
+        
     }
 
     void Update()
@@ -225,10 +227,10 @@ public class Unit : MonoBehaviour
                 imgClass2.color = Color.red;
             }
 
-            imgClass1.rectTransform.sizeDelta = new Vector2(200, 200);
-            imgClass2.rectTransform.sizeDelta = new Vector2(200, 200);
-            imgClass3.rectTransform.sizeDelta = new Vector2(200, 200);
-            imgClass4.rectTransform.sizeDelta = new Vector2(200, 200);
+            imgClass1.rectTransform.sizeDelta = new Vector2(250, 250);
+            imgClass2.rectTransform.sizeDelta = new Vector2(250, 250);
+            imgClass3.rectTransform.sizeDelta = new Vector2(250, 250);
+            imgClass4.rectTransform.sizeDelta = new Vector2(250, 250);
 
             imgClass1.rectTransform.localPosition = new Vector3(150, 150, 0);
             imgClass2.rectTransform.localPosition = new Vector3(-150, -150, 0);
