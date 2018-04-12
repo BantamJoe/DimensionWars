@@ -64,6 +64,11 @@ public class Player : MonoBehaviour
                 return;
             }
 
+            if (hit.distance > 1000f)
+            {
+                return;
+            }
+
             // Start the fading effect from black
             SteamVR_Fade.Start(Color.black, 0);
             // To nothing
