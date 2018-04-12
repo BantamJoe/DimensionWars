@@ -25,7 +25,6 @@ public class ScaleToCamera : MonoBehaviour {
     {
         Plane plane = new Plane(cam.transform.forward, cam.transform.position);
         float dist = plane.GetDistanceToPoint(transform.position);
-        Debug.Log(dist);
         transform.localScale = initialScale * dist * objectScale;
     }
 }
