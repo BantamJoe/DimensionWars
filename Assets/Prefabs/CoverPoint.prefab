@@ -50,7 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4094710123456034}
   m_Layer: 0
-  m_Name: CoverPos3
+  m_Name: CoverPos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4780961147649704}
   m_Layer: 0
-  m_Name: CoverPos1
+  m_Name: CoverPos3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4239436563033942}
   m_Layer: 0
-  m_Name: CoverPos3
+  m_Name: CoverPos1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4485340424284580}
   m_Layer: 0
-  m_Name: CoverPos1
+  m_Name: CoverPos3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
