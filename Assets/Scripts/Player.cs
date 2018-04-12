@@ -42,22 +42,11 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.tag == "CoverPoint")
-            {
-                var target = hit.collider.transform.parent;
-                foreach (var squad in selectedSquads)
-                {
-                    squad.SetCoverTarget(target.gameObject);
-                }
-            }
-            else
-            {
-                foreach (var squad in selectedSquads)
-                {
-                    squad.SetImmediateMoveTarget(hit.point);
-                }
-            }
 
+            foreach (var squad in selectedSquads)
+            {
+                squad.SetImmediateMoveTarget(hit.point);
+            }
         }
     }
 
@@ -70,6 +59,11 @@ public class Player : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
+            if (hit.collider.tag != "Ground")
+            {
+                return;
+            }
+
             // Start the fading effect from black
             SteamVR_Fade.Start(Color.black, 0);
             // To nothing

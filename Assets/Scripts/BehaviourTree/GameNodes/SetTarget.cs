@@ -30,6 +30,12 @@ public class SetTarget : BehaviourNode
                 continue;
             }
 
+            // Don't target already targeted
+            if (targetHealth.isUnderAttack)
+            {
+                continue;
+            }
+
 
             var distance = Vector3.Distance(context.unit.transform.position, unit.transform.position);
             if (distance < targetingDistance)

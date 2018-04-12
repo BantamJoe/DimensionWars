@@ -21,6 +21,7 @@ public class BehaviourTree : MonoBehaviour
             // Handle death
             if (health.isDead)
             {
+                HandleDie();
                 yield break;
             }
 
@@ -36,6 +37,7 @@ public class BehaviourTree : MonoBehaviour
             // Handle death
             if (health.isDead)
             {
+                HandleDie();
                 yield break;
             }
 
@@ -50,6 +52,14 @@ public class BehaviourTree : MonoBehaviour
             {
                 yield return new WaitForFixedUpdate();
             }
+        }
+    }
+
+    void HandleDie()
+    {
+        if (context.unit.cover != null)
+        {
+            context.unit.cover.CheckOut(context.unit);
         }
     }
 

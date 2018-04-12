@@ -17,6 +17,7 @@ public class Announce : BehaviourNode
         //Debug.DrawLine(context.unit.transform.position, context.target.transform.position, Color.magenta, 100, false);
         var textComponent = GameObject.Find("AnnounceText").GetComponent<PostBroadcast>();
         textComponent.Say(text);
+        Debug.Log("MESSAGE: " + text);
         yield break;
     }
 

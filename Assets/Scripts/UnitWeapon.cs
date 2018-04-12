@@ -20,7 +20,33 @@ public class UnitWeapon : MonoBehaviour
         var health = target.GetComponent<UnitHealth>();
         if (health != null)
         {
-            health.TakeDamage(1, unit);
+            health.TakeDamage(10, unit);
         }
+
+        if (unit.unitClass == Unit.Class.HeavyAssault)
+        {
+            var ds = Vector3.Distance(transform.position, target.transform.position);
+            if (ds <= 30f)
+            {
+                var dir = target.transform.position - transform.position;
+                dir.Normalize();
+                dir *= 750f;
+                var b = target.GetComponent<Rigidbody>();
+                if (b != null)
+                {
+                    b.isKinematic = false;
+                    b.AddForce(dir);
+                    StartCoroutine(CooldownPush(b));
+                    //b.MovePosition(b.transform.position + dir);
+                    //b.isKinematic = true;
+                }
+            }
+        }
+    }
+
+    IEnumerator CooldownPush(Rigidbody t)
+    {
+        yield return new WaitForSeconds(0.9f);
+        t.isKinematic = true;
     }
 }
