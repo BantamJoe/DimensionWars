@@ -27,10 +27,10 @@ public class SoldierBehaviourTree : MonoBehaviour
         {
             bt.root = SniperBehaviour();
         }
-        else if (unit.unitClass == Unit.Class.MG)
-        {
+        //else if (unit.unitClass == Unit.Class.MG)
+        //{
 
-        }
+        //}
         else
         {
             bt.root = RiflemanBehaviour();
